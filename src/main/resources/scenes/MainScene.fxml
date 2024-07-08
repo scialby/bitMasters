@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="com.pizzagpt.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <ButtonBar prefHeight="40.0" prefWidth="200.0">
-     <buttons>
-       <Button mnemonicParsing="false" text="ciao" />
-     </buttons>
-   </ButtonBar>
-
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
-</VBox>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.HelloController">
+   <children>
+      <Label layoutX="72.0" layoutY="92.0" text="username" />
+      <Label layoutX="72.0" layoutY="136.0" text="password" />
+      <TextField layoutX="161.0" layoutY="88.0" />
+      <TextField layoutX="161.0" layoutY="132.0" />
+      <Button fx:id="btnLogin" layoutX="135.0" layoutY="175.0" mnemonicParsing="false" onAction="#userLogin" text="Login" />
+      <Button fx:id="btnRegister" layoutX="212.0" layoutY="175.0" mnemonicParsing="false" onAction="#userRegister" text="Register" />
+   </children>
+</Pane>
