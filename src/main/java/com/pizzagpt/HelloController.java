@@ -1,4 +1,4 @@
-package com.example.pizzagpt;
+package com.pizzagpt;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
