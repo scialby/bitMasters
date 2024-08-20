@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com.pizzagpt/scenes/userSession/LoginScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
@@ -43,3 +43,4 @@ public class Main extends Application {
         launch();
     }
 }
+//prova
