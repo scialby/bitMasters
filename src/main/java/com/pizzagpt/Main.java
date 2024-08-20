@@ -15,7 +15,7 @@ public class Main extends Application {
     public static Utils util;
     public static int windowWidth = 1000;
     public static int windowHeight = 600;
-    private String mainViewPath = "/com.pizzagpt/scenes/MainView.fxml";
+    private String mainViewPath = "/com.pizzagpt/scenes/sortino/SortinoEx1_1.fxml";
     @Override
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
@@ -29,6 +29,7 @@ public class Main extends Application {
         SortinoLoader sortinoLoader = new SortinoLoader();
         try {
             sortinoLoader.loadExercises();
+            System.out.println("eseguito startSortinOView");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
