@@ -1,6 +1,7 @@
 package com.pizzagpt;
 
 import com.pizzagpt.sortino.SortinoLoader;
+import com.pizzagpt.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,25 +11,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static Stage stg;
+    public static Stage stg;
+    public static Utils util;
+    public static int windowWidth = 1000;
+    public static int windowHeight = 600;
+    private String mainViewPath = "/com.pizzagpt/scenes/MainView.fxml";
     @Override
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        primaryStage.setTitle("Hello!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    public static void setScene(String path) throws IOException {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-            stg.setScene(scene);
-            stg.show();
+        util.setScene(mainViewPath);
 
     }
+
     @FXML
     public void startSortinoView(){
         System.out.println("start sortino View");
@@ -43,4 +37,3 @@ public class Main extends Application {
         launch();
     }
 }
-//prova
