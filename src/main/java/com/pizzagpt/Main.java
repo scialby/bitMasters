@@ -6,20 +6,25 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Main extends Application {
+    public static int playerScore = 0;
+    public static Label playerScoreLabel;
     public static Stage stg;
     public static Utils util;
     public static int windowWidth = 1000;
     public static int windowHeight = 600;
-    private String mainViewPath = "/com.pizzagpt/scenes/sortino/SortinoEx1_1.fxml";
+    private String mainViewPath = "/com.pizzagpt/scenes/sortino/SortinoMainView.fxml";
     @Override
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
         util.setScene(mainViewPath);
+
+
 
     }
 
@@ -29,7 +34,6 @@ public class Main extends Application {
         SortinoLoader sortinoLoader = new SortinoLoader();
         try {
             sortinoLoader.loadExercises();
-            System.out.println("eseguito startSortinOView");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
