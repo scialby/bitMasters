@@ -23,9 +23,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
         util.setScene(mainViewPath);
-
-
-
     }
 
     @FXML
@@ -38,6 +35,8 @@ public class Main extends Application {
             throw new RuntimeException(e);
         }
     }
+
+
     public static void main(String[] args) {
         launch();
     }
