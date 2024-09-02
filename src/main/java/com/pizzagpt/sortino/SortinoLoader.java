@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.beans.value.ChangeListener;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +31,7 @@ public class SortinoLoader implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         if (choiceBoxEx1_1 != null) {
             choiceBoxEx1_1.getItems().addAll(choiceBoxEx1_1Values);
             choiceBoxEx1_1.setValue(choiceBoxEx1_1Values[0]); // Set default value
