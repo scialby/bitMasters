@@ -18,7 +18,8 @@ public class Main extends Application {
     public static Utils util;
     public static int windowWidth = 1000;
     public static int windowHeight = 600;
-    private String mainViewPath = "/com.pizzagpt/scenes/sortino/SortinoMainView.fxml";
+    private String mainViewPath = "/com.pizzagpt/scenes/userSession/LoginScene.fxml";
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage;
