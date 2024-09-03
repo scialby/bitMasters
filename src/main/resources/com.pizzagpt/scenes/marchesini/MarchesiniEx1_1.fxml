@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.sortino.SortinoLoader">
+   <children>
+      <ImageView fitHeight="170.0" fitWidth="506.0" layoutX="47.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="@images/es1_1.png" />
+          </image>
+      </ImageView>
+      <Label layoutX="72.0" layoutY="228.0" prefHeight="41.0" prefWidth="456.0" text="Il codice non funziona perché mancano dei caratteri. Quali sono?">
+         <font>
+            <Font name="Segoe UI Italic" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="opt3" alignment="CENTER" layoutX="310.0" layoutY="286.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text="; e }">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
+               <color>
+                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="opt1" alignment="CENTER" layoutX="58.0" layoutY="286.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text=", e }">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
+               <color>
+                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="opt4" alignment="CENTER" layoutX="436.0" layoutY="286.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text=", e (">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
+               <color>
+                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="opt2" alignment="CENTER" layoutX="184.0" layoutY="286.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text="; e )">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
+               <color>
+                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button alignment="CENTER" layoutX="433.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Prossimo &gt;&gt;" textFill="#aaaaaa">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button alignment="CENTER" layoutX="26.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="&lt;&lt; Precedente" textFill="#aaaaaa">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="mainMenu" alignment="CENTER" layoutX="215.0" layoutY="375.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="170.0" style="-fx-background-color: rgb(255, 180, 180);" text="Esci dall'esercizio" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
+               <color>
+                  <Color red="1.0" green="0.7058823704719543" blue="0.7058823704719543" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Label contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" prefHeight="41.0" prefWidth="456.0" text="FACILE  |  ESERCIZIO 1">
+         <font>
+            <Font name="Leelawadee UI Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

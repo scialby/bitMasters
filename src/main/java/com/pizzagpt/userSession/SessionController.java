@@ -7,7 +7,7 @@ public class SessionController {
     public void skipLogin(){
         System.out.println("Skip login");
         try {
-            Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml", Main.windowWidth, Main.windowHeight); //Sposta in un'altra finestra
+            Main.util.setScene("/com.pizzagpt/scenes/marchesini/MarchesiniEx1_1.fxml"); //Sposta in un'altra finestra
         } catch (Exception e) {
             e.printStackTrace();
         }
