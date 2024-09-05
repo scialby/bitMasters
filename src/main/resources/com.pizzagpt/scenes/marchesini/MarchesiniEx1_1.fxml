@@ -8,79 +8,24 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.sortino.SortinoLoader">
-   <children>
-      <ImageView fitHeight="170.0" fitWidth="506.0" layoutX="47.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-              <Image url="@images/es1_1.png" />
-          </image>
-      </ImageView>
-      <Label layoutX="72.0" layoutY="228.0" prefHeight="41.0" prefWidth="456.0" text="Il codice non funziona perché mancano dei caratteri. Quali sono?">
-         <font>
-            <Font name="Segoe UI Italic" size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="opt3" alignment="CENTER" layoutX="310.0" layoutY="286.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text="; e }">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
-               <color>
-                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-      <Button fx:id="opt1" alignment="CENTER" layoutX="58.0" layoutY="286.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text=", e }">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
-               <color>
-                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-      <Button fx:id="opt4" alignment="CENTER" layoutX="436.0" layoutY="286.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text=", e (">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
-               <color>
-                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-      <Button fx:id="opt2" alignment="CENTER" layoutX="184.0" layoutY="286.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-background-color: rgb(230, 230, 230);" text="; e )">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
-               <color>
-                  <Color red="0.9019607901573181" green="0.9019607901573181" blue="0.9019607901573181" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-      <Button alignment="CENTER" layoutX="433.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Prossimo &gt;&gt;" textFill="#aaaaaa">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.MarchesiniController">
+   <ImageView fitHeight="170.0" fitWidth="506.0" layoutX="47.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/es1_1.png" />
+   </ImageView>
+   <Label alignment="CENTER" layoutX="1.0" layoutY="387.0" prefHeight="41.0" prefWidth="1000.0" text="Il codice non funziona perché mancano dei caratteri. Quali sono?" textAlignment="CENTER">
+      <font>
+         <Font name="Segoe UI Italic" size="18.0" />
+      </font>
+   </Label>
+   <HBox alignment="CENTER" layoutY="515.0" prefHeight="85.0" prefWidth="1000.0" style="-fx-spacing: 60; -fx-background-color: rgb(248, 248, 248);">
+      <effect>
+         <DropShadow height="91.26" radius="22.315" width="0.0">
+            <color>
+               <Color red="0.3815789520740509" green="0.3815789520740509" blue="0.3815789520740509" />
+            </color>
+         </DropShadow>
+      </effect>
+      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="150.0" style="-fx-background-color: rgb(235, 235, 235);" text="&lt;&lt; Precedente" textFill="#868686">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -88,7 +33,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button alignment="CENTER" layoutX="26.0" layoutY="375.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="&lt;&lt; Precedente" textFill="#aaaaaa">
+      <Button fx:id="mainMenu" alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="198.0" style="-fx-background-color: rgb(255, 200, 200);" text="Esci dall'esercizio" textFill="RED">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="133.0" style="-fx-background-color: rgb(235, 235, 235);" text="Prossimo &gt;&gt;" textFill="#868686">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -96,25 +49,57 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="mainMenu" alignment="CENTER" layoutX="215.0" layoutY="375.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="170.0" style="-fx-background-color: rgb(255, 180, 180);" text="Esci dall'esercizio" textFill="RED">
+   </HBox>
+   <Label contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" prefHeight="41.0" prefWidth="456.0" text="FACILE  |  ESERCIZIO 1">
+      <font>
+         <Font name="Leelawadee UI Bold" size="32.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="834.0" layoutY="12.0" prefHeight="49.0" prefWidth="77.0" style="-fx-border-width: 2; -fx-border-color: rgb(136, 136, 136); -fx-border-radius: 25;" text="1/6" textAlignment="CENTER" textFill="#888888">
+      <font>
+         <Font name="Leelawadee UI" size="29.0" />
+      </font>
+   </Label>
+   <HBox alignment="CENTER" layoutY="436.0" prefHeight="49.0" prefWidth="1000.0" style="-fx-spacing: 100;">
+      <Button fx:id="opt2" alignment="CENTER" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" styleClass="option" stylesheets="@style.css" text=", e {" textFill="#0073ff">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <effect>
-            <DropShadow height="25.0" radius="12.0" spread="0.5" width="25.0">
-               <color>
-                  <Color red="1.0" green="0.7058823704719543" blue="0.7058823704719543" />
-               </color>
-            </DropShadow>
-         </effect>
       </Button>
-      <Label contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" prefHeight="41.0" prefWidth="456.0" text="FACILE  |  ESERCIZIO 1">
+      <Button fx:id="opt3" alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="106.0" styleClass="option" text="; e }" textFill="#0073ff">
          <font>
-            <Font name="Leelawadee UI Bold" size="30.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
-      </Label>
-   </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="opt4" alignment="CENTER" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" styleClass="option" text=", e (" textFill="#0073ff">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="opt21" alignment="CENTER" layoutX="314.0" layoutY="10.0" mnemonicParsing="false" onAction="#wrongChoice" prefHeight="49.0" prefWidth="106.0" styleClass="option" text="; e )" textFill="#0073ff">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </HBox>
+   <Button fx:id="mainMenu1" alignment="CENTER" layoutX="931.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" style="-fx-background-color: rgb(255, 200, 200); -fx-background-radius: 0;" text="X" textFill="RED">
+      <font>
+         <Font name="Malgun Gothic Bold" size="25.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
 </AnchorPane>
