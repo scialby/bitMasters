@@ -1,13 +1,14 @@
 package com.pizzagpt.userSession;
 
+import com.pizzagpt.marchesini.MarchesiniUtils;
 import javafx.fxml.FXML;
-import com.pizzagpt.Main;
+
 public class SessionController {
     @FXML
-    public void skipLogin(){
+    public void skipLogin() {
         System.out.println("Skip login");
         try {
-            Main.util.setScene("/com.pizzagpt/scenes/marchesini/MarchesiniEx1_1.fxml"); //Sposta in un'altra finestra
+            MarchesiniUtils.loadScene(1, 1); //Sposta in un'altra finestra
         } catch (Exception e) {
             e.printStackTrace();
         }
