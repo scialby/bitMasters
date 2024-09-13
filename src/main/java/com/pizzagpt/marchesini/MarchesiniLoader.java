@@ -1,39 +1,66 @@
 package com.pizzagpt.marchesini;
 
 import com.pizzagpt.Main;
-import com.pizzagpt.Utils;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import java.io.File;
-import java.io.FileNotFoundException;
+import com.pizzagpt.userSession.User;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.Scanner;
 
-public class MarchesiniLoader implements Initializable {
+public abstract class MarchesiniLoader {
 
-    public static void loadExercise(int difficulty, int exercise) throws IOException, InterruptedException {
-        Utils.setScene("/com.pizzagpt/scenes/marchesini/MarchesiniEx" + difficulty + "_" + exercise + ".fxml"); //Imposta la scena
-        Main.stg.setTitle("Sezione " + difficulty + ", Esercizio " + exercise);
-        Button btn;
-        try {
-            Scanner read = new Scanner(new File("src/main/java/com/pizzagpt/marchesini/es1.txt"));
-            while(read.hasNextLine()) {
-                String line = read.nextLine();
-                String[] tokens = line.split(",");
-                if(tokens[0].equals("MarchesiniEx" + difficulty + "_" + exercise)) {
-                    btn = (Button)Main.stg.getScene().lookup("#"+tokens[1]);
-                    btn.fire();
-                    break;
-                }
-            }
-        } catch(FileNotFoundException ex) {
-            System.out.println("[Errore: " + ex + "] File non trovato, riprova.");
-        }
+    //Variabili
+    private String path;
+    private User user;
+    //Oggetti
+    private Controller controller;
+    private AnchorPane loadedContent;
+    private StackPane root, overlay;
+    private ImageView imageView;
+    private Scene scene;
+
+    public MarchesiniLoader(String path, User user) throws IOException {
+        this.path = path;
+        this.user = user;
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Main.marchesini_views + path)); //Imposta il percorso
+        loadedContent = fxmlLoader.load(); //Carica il contenuto del percorso
+        controller = fxmlLoader.getController();
+        controller.setUser(user); //Passa l'utente della sessione
+        root = new StackPane(); //Crea il parente per contenuto e caricamento
+        root.getChildren().add(loadedContent); //Gli aggiunge il contenuto
+        overlay = new StackPane(); //Crea caricamento
+        overlay.getStyleClass().add("loading");
+        imageView = new ImageView(); //Crea loading-gif
+        imageView.setImage(new Image("file:" + Main.marchesini_images + "loading-gif.gif")); //Carica l'immagine e poi la imposta
+        imageView.setFitWidth(70);
+        imageView.setPreserveRatio(true);
+        overlay.getChildren().add(imageView); //Aggiunge gif al caricamento
+        root.getChildren().add(overlay); //Aggiunge il caricamento
+        scene = new Scene(root); //Crea la scena
+        scene.getStylesheets().clear(); //Toglie eventuali altri file CSS
+        scene.getStylesheets().add(getClass().getResource(Main.marchesini_css).toExternalForm()); //Applica il CSS giusto
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    //Getter
+    public String getPath() {
+        return path;
     }
+    public User getUser() {
+        return user;
+    }
+
+    //Funzioni complementari
+    public void show() { //Mostrare in definitiva la scena
+        Main.stg.setScene(scene);
+        Main.stg.show();
+    }
+    public void start() { //Funzione per rimuovere la schermata di caricamento
+        root.getChildren().remove(overlay);
+    }
+    public abstract void setTitle();
 }

@@ -57,6 +57,9 @@
     -fx-background-color: -gray-txt;
     -fx-text-fill: -gray-bg;
 }
+.button.navigation:disabled {
+    -fx-opacity: 0.5;
+}
 
 /* Esci dal programma */
 .button.exit {

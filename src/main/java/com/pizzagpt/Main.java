@@ -8,10 +8,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class Main extends Application {
+
+    //Globals
+    public final static String resources = "src/main/resources";
+    public final static String marchesini = "/com.pizzagpt/scenes/marchesini/";
+    public final static String accounts = resources + "/com.pizzagpt/scenes/accounts.txt";
+    public final static String marchesini_views = marchesini + "views/";
+    public final static String marchesini_saves = resources + marchesini + "saves/";
+    public final static String marchesini_images = resources + marchesini + "images/";
+    public final static String marchesini_css = marchesini + "style.css";
+    public final static String splitter = ",";
+
     public static int playerScore = 0;
     public static Label playerScoreLabel;
     public static Stage stg;
