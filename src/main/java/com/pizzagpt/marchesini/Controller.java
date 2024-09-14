@@ -20,15 +20,11 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private User user;
-    private Scene root;
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    //----------------//
-    // Scrive su file //
-    //----------------//
     public void writeToFile(String[] tokens, String choice) {
         try {
             PrintWriter write = new PrintWriter(Main.marchesini_saves + "user" + user.getId() + "/" + tokens[0] + ".txt");

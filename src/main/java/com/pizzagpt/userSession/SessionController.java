@@ -9,10 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.StageStyle;
 
 import java.awt.image.PackedColorModel;
 import java.io.*;
@@ -22,82 +25,77 @@ import java.util.Scanner;
 
 public class SessionController implements Initializable {
 
-    //Variabili
+    // Variabili
     private String username, password;
     private UserManager users;
 
-    //Oggetti
+    // Oggetti
     private Button btn;
     @FXML
-    private TextField usernameField, passwordField;
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label errorField;
+    @FXML
+    private Label windowName;
 
-
+    // Initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Main.stg.setTitle(windowName.getText());
+        Main.stg.setResizable(false);
         users = new UserManager();
-        users.fromFile();
     }
 
-    //////////////
-    // Funzioni //
-    //////////////
-
-    // Estrapola il testo
-    // TODO: Migliorare struttura degli oggetti nel .fxml
-    /*public void getCredentials(ActionEvent event) {
-        btn = (Button)event.getSource();
-        VBox vBox = (VBox)btn.getParent().getParent().getChildrenUnmodifiable().getFirst();
-        HBox usernameBox = (HBox)vBox.getChildren().getFirst();
-        HBox passwordBox = (HBox)vBox.getChildren().getLast();
-        usernameField = (TextField)usernameBox.getChildren().getLast();
-        passwordField = (TextField)passwordBox.getChildren().getLast();
-        username = usernameField.getText().trim();
-        password = passwordField.getText().trim();
-    }*/
-
-    // Login //TODO: Migliorare e compattare le variabili con il register
-    public void loginHandler(ActionEvent event) {
+    // Login
+    public void toLogin() throws IOException {
+        Main.util.setScene(Main.login_scene);
+    }
+    public void loginHandler(ActionEvent event) throws IOException {
         this.username = usernameField.getText();
         this.password = passwordField.getText();
-        try {
-            Scanner read = new Scanner(new File(Main.accounts));
-            while(read.hasNextLine()) {
-                String line = read.nextLine();
-                String[] tokens = line.split(Main.splitter);
-                if(username.equals(tokens[0]) && password.equals(tokens[1])) {
-                    int id = Integer.parseInt(tokens[2]);
-                    User user = new User(username, password, id);
-                    new MarchesiniExerciseLoader(user, 1, 1);
+        if(!username.isEmpty() && !password.isEmpty()) {
+            if(!users.fromFile()) {
+                errorField.setText("Nessun account ancora registrato.");
+                return;
+            }
+            for(User user : users.getUsers()) {
+                if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                    new MarchesiniExerciseLoader(new User(username, password, user.getId()), 1, 1);
+                    return;
                 }
             }
-        } catch(IOException ex) {
-            System.out.println("[Eccezione: " + ex + "] E' stato riscontrato un problema nel login.");
+            errorField.setText("Username o password sbagliati.");
+        } else {
+            errorField.setText("Compila gli spazi vuoti.");
         }
     }
 
-    public void registerHandler(ActionEvent event) {
+    // Register
+    public void toRegister() throws IOException {
+        Main.util.setScene(Main.register_scene);
+    }
+    public void registerHandler(ActionEvent event) throws IOException {
         this.username = usernameField.getText();
         this.password = passwordField.getText();
-        if(!username.isEmpty() && !password.isEmpty()) { //Se entrambi hanno testo non vuoto allora procedi
+        if(!username.isEmpty() && !password.isEmpty()) { //Controlla spazi vuoti
+            users.fromFile();
             User user = new User(username, password);
-            if(users.addUser(user)) { //Se lo aggiunge allora
-                System.out.println(new File(Main.marchesini_saves + "user" + user.getId()).mkdir()); //Crea salvataggio
-                users.toFile(); //Salva
-                System.out.println("Utente registrato");
+            if(users.addUser(user)) { //Crea il nuovo utente e accede
+                System.out.println(new File(Main.marchesini_saves + "user" + user.getId()).mkdir());
+                users.toFile();
+                loginHandler(event);
             } else {
-                System.out.println("Utente non registrato");
+                errorField.setText("Utente già esistente.");
             }
-        } else { //Eliminare
-            System.out.println("Immettere spazi non vuoti");
+        } else {
+            errorField.setText("Compila gli spazi vuoti.");
         }
     }
-    @FXML
-    public void skipLogin() {
-        System.out.println("Skip login");
-        try {
-            //new ExerciseLoader(1, 1); //Sposta in un'altra finestra
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+    // Temporaneo
+    public void temp() throws IOException {
+        Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoEx1_2.fxml");
     }
 }

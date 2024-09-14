@@ -15,6 +15,7 @@ public class Utils {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
         Pane loadedContent = fxmlLoader.load();
         Scene scene = new Scene(loadedContent);
+        scene.getStylesheets().add(Utils.class.getResource(Main.css).toExternalForm()); //Applica il CSS giusto
         Main.stg.setScene(scene);
         Main.stg.show();
     }

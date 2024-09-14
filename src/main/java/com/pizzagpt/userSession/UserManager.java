@@ -27,7 +27,6 @@ public class UserManager {
     }
 
     //Altro
-    //TODO: Togliere boolean
     public boolean addUser(User user) {
         if(!exists(user)) {
             users.add(user);
@@ -44,7 +43,7 @@ public class UserManager {
         return false;
     }
 
-    public void toFile() { //ArrayList to File
+    public boolean toFile() { //ArrayList to File
         try {
             PrintWriter pw = new PrintWriter(Main.accounts);
             for(User user : users) {
@@ -53,10 +52,12 @@ public class UserManager {
             pw.close();
         } catch(FileNotFoundException ex) {
             System.out.println("File non trovato. [Eccezione " + ex + "]");
+            return false;
         }
+        return true;
     }
 
-    public void fromFile() { //File to ArrayList
+    public boolean fromFile() { //File to ArrayList
         try {
             Scanner read = new Scanner(new File(Main.accounts));
             while(read.hasNextLine()) {
@@ -67,6 +68,8 @@ public class UserManager {
             read.close();
         } catch(FileNotFoundException ex) {
             System.out.println("File non trovato. [Eccezione " + ex + "]");
+            return false;
         }
+        return true;
     }
 }

@@ -1,0 +1,60 @@
+/* Variabili */
+* {
+    -dark-gray: rgb(30, 30, 30);
+    -gray: rgb(100, 100, 100);
+    -light-gray: rgb(180, 180, 180);
+    -lighter-gray: rgb(240, 240, 240);
+}
+
+/* Globali */
+.root {
+    -fx-background-color: white;
+}
+
+/* Contenitori */
+.mainarea {
+    -fx-spacing: 15;
+}
+.inputfields {
+    -fx-spacing: 25;
+}
+.inputbuttons {
+    -fx-spacing: 10;
+}
+
+/* Campo di testo */
+.textfield {
+    -fx-background-color: -lighter-gray;
+    -fx-prompt-text-fill: -gray;
+    -fx-text-fill: -gray;
+}
+.textfield:focused {
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 2;
+    -fx-border-color: -dark-gray;
+    -fx-prompt-text-fill: -light-gray;
+    -fx-text-fill: -gray;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Pulsanti */
+.submit {
+    -fx-background-color: -lighter-gray;
+    -fx-text-fill: -dark-gray;
+    -fx-background-radius: 25;
+}
+.submit:hover {
+    -fx-background-color: -dark-gray;
+    -fx-text-fill: -lighter-gray;
+    -fx-cursor: hand;
+}
+.submit:pressed {
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+/* HyperText */
+.hyperlink:pressed {
+    -fx-border-style: none;
+}
