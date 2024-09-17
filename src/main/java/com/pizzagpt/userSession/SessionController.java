@@ -62,8 +62,8 @@ public class SessionController implements Initializable {
             }
             for(User user : users.getUsers()) {
                 if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                    new MarchesiniExerciseLoader(new User(username, password, user.getId()), 1, 1);
-                    return;
+                    Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml");
+                    return;Z
                 }
             }
             errorField.setText("Username o password sbagliati.");
