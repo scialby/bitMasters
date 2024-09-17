@@ -8,12 +8,12 @@
    <children>
       <VBox alignment="CENTER" layoutY="296.0" styleClass="inputbuttons">
          <children>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginHandler" prefHeight="51.0" prefWidth="85.0" styleClass="submit" text="ACCEDI">
+            <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#registerHandler" prefHeight="51.0" prefWidth="121.0" styleClass="submit" text="REGISTRATI">
                <font>
                   <Font size="16.0" />
                </font>
                 </Button>
-            <Hyperlink alignment="CENTER" onAction="#toRegister" prefHeight="26.0" prefWidth="300.0" text="Non hai un account? Registrati qui!">
+            <Hyperlink alignment="CENTER" onAction="#toLogin" prefHeight="26.0" prefWidth="300.0" text="Hai già un account? Accedi qui!">
                <font>
                   <Font size="14.0" />
                </font>
@@ -27,7 +27,7 @@
       </Label>
       <VBox alignment="CENTER" layoutX="50.0" layoutY="87.0" prefWidth="200.0" styleClass="mainarea">
          <children>
-            <Label fx:id="windowName" alignment="CENTER" prefHeight="41.0" prefWidth="132.0" text="Accedi" textAlignment="CENTER">
+            <Label fx:id="windowName" alignment="CENTER" prefHeight="41.0" prefWidth="132.0" text="Registrati" textAlignment="CENTER">
                <font>
                   <Font name="Leelawadee UI Bold" size="25.0" />
                </font>
@@ -53,6 +53,5 @@
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="20.0" layoutY="272.0" mnemonicParsing="false" onAction="#temp" prefHeight="25.0" prefWidth="261.0" text="SORTINO EX 1_2 (PULSANTE TEMPORANEO)" />
    </children>
 </AnchorPane>
