@@ -62,7 +62,7 @@ public class SessionController implements Initializable {
             }
             for(User user : users.getUsers()) {
                 if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                    new MarchesiniExerciseLoader(new User(username, password, user.getId()), 1, 1);
+                    Main.util.setScene("IMPOSTARE SCENA DA APRIRE DOPO IL LOGIN");
                     return;
                 }
             }
