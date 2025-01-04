@@ -1,27 +1,26 @@
 package com.pizzagpt.userSession;
 
 import com.pizzagpt.Main;
+import com.pizzagpt.Paths;
 import com.pizzagpt.Utils;
 import com.pizzagpt.marchesini.MarchesiniExerciseLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.StageStyle;
 
-import java.awt.image.PackedColorModel;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
+
+//logs
+import static com.pizzagpt.LoggerManager.LOGGER;
+import static com.pizzagpt.LoggerManager.debug;
+import static com.pizzagpt.LoggerManager.error;
 
 public class SessionController implements Initializable {
 
@@ -30,7 +29,6 @@ public class SessionController implements Initializable {
     private UserManager users;
 
     // Oggetti
-    private Button btn;
     @FXML
     private TextField usernameField;
     @FXML
@@ -43,26 +41,37 @@ public class SessionController implements Initializable {
     // Initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Main.stg.setTitle(windowName.getText());
+        Main.stg.setTitle("titolo");
         Main.stg.setResizable(false);
         users = new UserManager();
     }
+    public void startSortino(){
+        debug("avvio esercizi sortino");
 
+    }
+    public void startMarchesini(){
+        debug("avvio esercizi marchesini");
+
+    }
     // Login
     public void toLogin() throws IOException {
-        Main.util.setScene(Main.login_scene);
+        Utils.setScene(Paths.LOGIN_SCENE); // Utilizzato Paths per il percorso
     }
+
     public void loginHandler(ActionEvent event) throws IOException {
         this.username = usernameField.getText();
         this.password = passwordField.getText();
-        if(!username.isEmpty() && !password.isEmpty()) {
-            if(!users.fromFile()) {
+        if (!username.isEmpty() && !password.isEmpty()) {
+            if (!users.fromFile()) {
                 errorField.setText("Nessun account ancora registrato.");
                 return;
             }
-            for(User user : users.getUsers()) {
-                if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                    Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml");
+            for (User user : users.getUsers()) {
+                if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                    // Login confermato, si passa alla MainView del programma
+                    debug("user autenticato con successo");
+
+                    Utils.setScene("/com.pizzagpt/scenes/userSession/MainView.fxml");
                     return;
                 }
             }
@@ -74,16 +83,17 @@ public class SessionController implements Initializable {
 
     // Register
     public void toRegister() throws IOException {
-        Main.util.setScene(Main.register_scene);
+        Utils.setScene(Paths.REGISTER_SCENE); // Utilizzato Paths per il percorso
     }
+
     public void registerHandler(ActionEvent event) throws IOException {
         this.username = usernameField.getText();
         this.password = passwordField.getText();
-        if(!username.isEmpty() && !password.isEmpty()) { //Controlla spazi vuoti
+        if (!username.isEmpty() && !password.isEmpty()) { // Controlla spazi vuoti
             users.fromFile();
             User user = new User(username, password);
-            if(users.addUser(user)) { //Crea il nuovo utente e accede
-                System.out.println(new File(Main.marchesini_saves + "user" + user.getId()).mkdir());
+            if (users.addUser(user)) { // Crea il nuovo utente e accede
+                new File(Paths.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
                 users.toFile();
                 loginHandler(event);
             } else {
@@ -94,8 +104,5 @@ public class SessionController implements Initializable {
         }
     }
 
-    // Temporaneo
-    public void temp() throws IOException {
-        Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoEx1_2.fxml");
-    }
+
 }

@@ -2,6 +2,7 @@ module com.pizzagpt {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires java.logging;
 
     exports com.pizzagpt.sortino to javafx.fxml;
     opens com.pizzagpt.sortino to javafx.fxml;

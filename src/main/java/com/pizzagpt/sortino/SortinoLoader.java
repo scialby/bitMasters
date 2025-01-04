@@ -18,8 +18,6 @@ import java.util.ResourceBundle;
 
 public class SortinoLoader implements Initializable {
 
-
-
     @FXML
     private ChoiceBox<String> choiceBoxEx1_1;
 

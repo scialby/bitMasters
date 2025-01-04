@@ -8,13 +8,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import com.pizzagpt.Paths;
+import javafx.scene.shape.Path;
 
 public class MarchesiniExerciseLoader extends MarchesiniLoader {
-
+    private String SPLITTER = ",";
     //Variabili
     private int category, exercise;
-
-    public MarchesiniExerciseLoader(User user, int category, int exercise) throws IOException {
+    private
+    MarchesiniExerciseLoader(User user, int category, int exercise) throws IOException {
         super("cat" + category + "/Es" + exercise + ".fxml", user);
         this.category = category;
         this.exercise = exercise;
@@ -49,10 +51,10 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
     //Carica il salvataggio
     public void loadSave() {
         try {
-            Scanner read = new Scanner(new File(Main.marchesini_saves + "user" + getUser().getId() + "/cat" + category + ".txt"));
+            Scanner read = new Scanner(new File(Paths.MARCHESINI_SAVES + "user" + getUser().getId() + "/cat" + category + ".txt"));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
-                String[] tokens = line.split(Main.splitter);
+                String[] tokens = line.split(SPLITTER);
                 if(exercise == Integer.parseInt(tokens[0])) {
                     Button btn = (Button)Main.stg.getScene().lookup("#" + tokens[1]);
                     btn.fire();
@@ -67,7 +69,7 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
     //Carica i tasti di navigazione
     public void loadNavigation() {
         //Variabili
-        String path = Main.resources + Main.marchesini_views + category + "/Es";
+        String path = Paths.RESOURCES + Paths.MARCHESINI_VIEWS + category + "/Es";
         File previousFile = new File(path + (exercise-1) + ".txt");
         File nextFile = new File(path + (exercise+1) + ".txt");
         Button previousBtn = (Button)Main.stg.getScene().lookup("#previous");

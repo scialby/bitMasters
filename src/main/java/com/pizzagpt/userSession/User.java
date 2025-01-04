@@ -1,13 +1,14 @@
 package com.pizzagpt.userSession;
 
 import com.pizzagpt.Main;
+import com.pizzagpt.Paths;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class User {
-
+    private String SPLITTER = ",";
     private String username, password;
     private int id;
 
@@ -49,11 +50,11 @@ public class User {
     private int generateId() { //Crea ID tenendo conto di quelli già assegnati
         int id = 0;
         try {
-            Scanner read = new Scanner(new File(Main.accounts));
+            Scanner read = new Scanner(new File(Paths.ACCOUNTS));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
                 if(!line.isBlank()) {
-                    String[] tokens = line.split(Main.splitter);
+                    String[] tokens = line.split(SPLITTER);
                     id = Integer.parseInt(tokens[2]);
                 }
             }

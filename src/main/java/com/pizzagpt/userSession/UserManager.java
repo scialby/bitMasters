@@ -1,6 +1,6 @@
 package com.pizzagpt.userSession;
 
-import com.pizzagpt.Main;
+import com.pizzagpt.Paths;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,64 +9,68 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserManager {
-
+    private String SPLITTER = ",";
     private ArrayList<User> users;
 
     public UserManager() {
-        users = new ArrayList<User>();
+        users = new ArrayList<>();
     }
 
-    //Getter
+    // Getter
     public ArrayList<User> getUsers() {
         return users;
     }
 
-    //Setter
+    // Setter
     public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
 
-    //Altro
+    // Aggiunge un nuovo utente se non esiste già
     public boolean addUser(User user) {
-        if(!exists(user)) {
+        if (!exists(user)) {
             users.add(user);
-            new File(Main.marchesini_saves + "user" + user.getId()).mkdir();
+            new File(Paths.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
             return true;
         }
         return false;
     }
-    public boolean exists(User user) { //Controlla se l'username esiste già
+
+    // Controlla se l'utente esiste già
+    public boolean exists(User user) {
         String username = user.getUsername();
-        for(User i : users) {
-            if(i.getUsername().equals(username)) return true;
+        for (User i : users) {
+            if (i.getUsername().equals(username)) return true;
         }
         return false;
     }
 
-    public boolean toFile() { //ArrayList to File
+    // Salva la lista di utenti in un file
+    public boolean toFile() {
         try {
-            PrintWriter pw = new PrintWriter(Main.accounts);
-            for(User user : users) {
-                pw.println(user.getUsername() + Main.splitter + user.getPassword() + Main.splitter + user.getId());
+            PrintWriter pw = new PrintWriter(Paths.ACCOUNTS);
+            for (User user : users) {
+                pw.println(user.getUsername() + SPLITTER + user.getPassword() + SPLITTER + user.getId());
             }
             pw.close();
-        } catch(FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println("File non trovato. [Eccezione " + ex + "]");
             return false;
         }
         return true;
     }
 
-    public boolean fromFile() { //File to ArrayList
+    // Legge la lista di utenti da un file
+    public boolean fromFile() {
         try {
-            Scanner read = new Scanner(new File(Main.accounts));
-            while(read.hasNextLine()) {
+            Scanner read = new Scanner(new File(Paths.ACCOUNTS));
+            while (read.hasNextLine()) {
                 String line = read.nextLine();
-                String[] tokens = line.split(Main.splitter);
+                String[] tokens = line.split(SPLITTER);
                 users.add(new User(tokens[0], tokens[1], Integer.parseInt(tokens[2])));
             }
             read.close();
-        } catch(FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println("File non trovato. [Eccezione " + ex + "]");
             return false;
         }

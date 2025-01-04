@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.userSession.SessionController">
+   <children>
+      <!-- Titolo della schermata -->
+      <Label alignment="CENTER" layoutX="150.0" layoutY="20.0" prefHeight="51.0" prefWidth="300.0" text="SCEGLI UN'OPZIONE" textAlignment="CENTER">
+         <font>
+            <Font name="Leelawadee UI Bold" size="30.0" />
+         </font>
+      </Label>
+
+      <!-- Box per avviare Sortino -->
+      <VBox fx:id="sortinoBox" alignment="CENTER" layoutX="50.0" layoutY="100.0" onMouseClicked="#startSortino" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #f0f0f0; -fx-background-radius: 10;">
+         <children>
+            <Label alignment="CENTER" onMouseClicked="#startSortino" text="Sortino" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+
+      <!-- Box per avviare Marchesini -->
+      <VBox fx:id="marchesiniBox" alignment="CENTER" layoutX="350.0" layoutY="100.0" onMouseClicked="#startMarchesini" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #f0f0f0; -fx-background-radius: 10;">
+         <children>
+            <Label alignment="CENTER" text="Marchesini" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

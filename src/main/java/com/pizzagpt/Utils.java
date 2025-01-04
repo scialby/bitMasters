@@ -7,15 +7,19 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;  // Importa il tipo Pane
 import java.io.IOException;
+import java.util.Objects;
 
 public class Utils {
+
+
 
     public static void setScene(String path) throws IOException {
         //DIFFERENZA: carica il file con la dimensione default.
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
+
         Pane loadedContent = fxmlLoader.load();
         Scene scene = new Scene(loadedContent);
-        scene.getStylesheets().add(Utils.class.getResource(Main.css).toExternalForm()); //Applica il CSS giusto
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(Paths.CSS)).toExternalForm()); //Applica il CSS giusto
         Main.stg.setScene(scene);
         Main.stg.show();
     }
