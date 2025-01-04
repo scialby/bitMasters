@@ -62,7 +62,7 @@ public class SessionController implements Initializable {
             }
             for(User user : users.getUsers()) {
                 if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                    Main.util.setScene("IMPOSTARE SCENA DA APRIRE DOPO IL LOGIN");
+                    Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml");
                     return;
                 }
             }

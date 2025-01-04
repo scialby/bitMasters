@@ -26,7 +26,7 @@ public class Main extends Application {
     public final static String marchesini_css = marchesini + "style.css";
     public final static String splitter = ",";
 
-    public static int playerScore = 0;
+    public static int playerScore  = 0;
     public static Label playerScoreLabel;
     public static Stage stg;
     public static Utils util;
