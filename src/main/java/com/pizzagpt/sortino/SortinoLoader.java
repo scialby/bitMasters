@@ -1,9 +1,15 @@
 package com.pizzagpt.sortino;
 
+import com.pizzagpt.Paths;
+import com.pizzagpt.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Label;
+import com.pizzagpt.sortino.TutorialController;
+
+import java.io.IOException;
 
 public class SortinoLoader {
 
@@ -21,19 +27,23 @@ public class SortinoLoader {
     @FXML
     public void initialize() {
         // Aggiunta delle opzioni per il primo ChoiceBox
-        choiceBoxEx1_1.setItems(FXCollections.observableArrayList("Facile", "Medio", "Difficile"));
+        choiceBoxEx1_1.setItems(FXCollections.observableArrayList("1", "2", "3"));
 
         // Aggiunta delle opzioni per il secondo ChoiceBox
-        choiceBoxEx1_2.setItems(FXCollections.observableArrayList("Facile", "Medio", "Difficile"));
+        choiceBoxEx1_2.setItems(FXCollections.observableArrayList("1", "2", "3"));
 
         // Aggiunta delle opzioni per il terzo ChoiceBox
-        choiceBoxEx1_3.setItems(FXCollections.observableArrayList("Facile", "Medio", "Difficile"));
+        choiceBoxEx1_3.setItems(FXCollections.observableArrayList("1", "2", "3"));
 
         // Listener per ciascun ChoiceBox per rilevare la selezione
         choiceBoxEx1_1.setOnAction(this::onChoiceBoxAction);
         choiceBoxEx1_2.setOnAction(this::onChoiceBoxAction);
         choiceBoxEx1_3.setOnAction(this::onChoiceBoxAction);
     }
+
+    @FXML
+    private Label tutorialText;
+
 
     // Metodo per gestire la selezione degli elementi nei ChoiceBox
     private void onChoiceBoxAction(ActionEvent event) {
@@ -44,18 +54,25 @@ public class SortinoLoader {
         // Verifica quale ChoiceBox ha generato l'evento
         if (event.getSource() == choiceBoxEx1_1) {
             selectedValue = choiceBoxEx1_1.getValue();
-            selectedId = "choiceBoxEx1_1";
+            selectedId = "1";
         } else if (event.getSource() == choiceBoxEx1_2) {
             selectedValue = choiceBoxEx1_2.getValue();
-            selectedId = "choiceBoxEx1_2";
+            selectedId = "2";
         } else if (event.getSource() == choiceBoxEx1_3) {
             selectedValue = choiceBoxEx1_3.getValue();
-            selectedId = "choiceBoxEx1_3";
+            selectedId = "3";
         }
 
         // Stampa il valore selezionato e l'ID dell'elemento
         if (selectedValue != null) {
-            System.out.println("Selezionato: " + selectedValue + " da " + selectedId);
+            String id=selectedId+"_"+selectedValue;
+            try {
+                Utils.setScene(Paths.TUTORIAL);
+                TutorialController tutorial = new TutorialController();
+                tutorial.setLabelText("TESTTOOOOO");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
