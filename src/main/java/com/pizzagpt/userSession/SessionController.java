@@ -63,7 +63,7 @@ public class SessionController implements Initializable {
             for(User user : users.getUsers()) {
                 if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                     Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml");
-                    return;Z
+                    return;
                 }
             }
             errorField.setText("Username o password sbagliati.");
