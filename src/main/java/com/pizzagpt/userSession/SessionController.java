@@ -47,7 +47,11 @@ public class SessionController implements Initializable {
     }
     public void startSortino(){
         debug("avvio esercizi sortino");
-
+        try {
+            Utils.setScene(Paths.SORTINO_MAIN);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void startMarchesini(){
         debug("avvio esercizi marchesini");

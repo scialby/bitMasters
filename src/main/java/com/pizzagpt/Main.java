@@ -37,25 +37,10 @@ public class Main extends Application {
         util.setScene(firstViewPath); // Carica la scena principale (Login)
     }
 
-    /**
-     * Metodo per avviare la view Sortino.
-     * Viene chiamato da un'azione utente, ad esempio un pulsante.
-     */
-    @FXML
-    public void startSortinoView() {
-        System.out.println("start sortino View");
-        SortinoLoader sortinoLoader = new SortinoLoader(); // Inizializza il loader per gli esercizi Sortino
-        try {
-            sortinoLoader.loadExercises(); // Carica gli esercizi
-        } catch (IOException e) {
-            throw new RuntimeException(e); // Gestione eccezione
-        }
-    }
+
 
     /**
      * Metodo principale del programma. Lancia l'applicazione JavaFX.
-     *
-     * @param args Argomenti della riga di comando (non utilizzati).
      */
     public static void main(String[] args) {
         launch(); // Avvia l'applicazione JavaFX

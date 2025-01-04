@@ -1,79 +1,61 @@
 package com.pizzagpt.sortino;
 
-import com.pizzagpt.Main;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.beans.value.ChangeListener;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+public class SortinoLoader {
 
-public class SortinoLoader implements Initializable {
-
+    // Dichiarazione dei ChoiceBox,(ogni choicebox avrà selezionabile il livello facile,medio,difficile)
     @FXML
     private ChoiceBox<String> choiceBoxEx1_1;
 
-    private final String[] choiceBoxEx1_1Values = {
-            "String risultato = numero1+numero2;",
-            "Int risultato = numero1+numero2",
-            "Float risultato = numero1+numero2;"  // Corretta
-    };
+    @FXML
+    private ChoiceBox<String> choiceBoxEx1_2;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    private ChoiceBox<String> choiceBoxEx1_3;
 
-        if (choiceBoxEx1_1 != null) {
-            choiceBoxEx1_1.getItems().addAll(choiceBoxEx1_1Values);
-            choiceBoxEx1_1.setValue(choiceBoxEx1_1Values[0]); // Set default value
+    // Metodo per aggiungere le opzioni selezionabili ai ChoiceBox
+    @FXML
+    public void initialize() {
+        // Aggiunta delle opzioni per il primo ChoiceBox
+        choiceBoxEx1_1.setItems(FXCollections.observableArrayList("Facile", "Medio", "Difficile"));
 
-            // Aggiungi listener per la scelta
-            choiceBoxEx1_1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    System.out.println("Selected Value - " + newValue);
-                    if ("Float risultato = numero1+numero2;".equals(newValue)) {
-                        Main.playerScore++;
-                        System.out.println("Correct answer selected! Score incremented.");
-                    } else {
-                        System.out.println("Incorrect answer selected.");
-                    }
-                    //imposto 2 scena 1 ex
+        // Aggiunta delle opzioni per il secondo ChoiceBox
+        choiceBoxEx1_2.setItems(FXCollections.observableArrayList("Facile", "Medio", "Difficile"));
 
-                    try {
-                        Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoEx1_2.fxml");
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+        // Aggiunta delle opzioni per il terzo ChoiceBox
+        choiceBoxEx1_3.setItems(FXCollections.observableArrayList("Facile", "Medio", "Difficile"));
 
-                }
-            });
+        // Listener per ciascun ChoiceBox per rilevare la selezione
+        choiceBoxEx1_1.setOnAction(this::onChoiceBoxAction);
+        choiceBoxEx1_2.setOnAction(this::onChoiceBoxAction);
+        choiceBoxEx1_3.setOnAction(this::onChoiceBoxAction);
+    }
 
-            System.out.println("ChoiceBox initialized with default values.");
-        } else {
-            System.out.println("ChoiceBox is not injected.");
+    // Metodo per gestire la selezione degli elementi nei ChoiceBox
+    private void onChoiceBoxAction(ActionEvent event) {
+        // Variabili per salvare il valore e l'ID selezionato
+        String selectedValue = "";
+        String selectedId = "";
+
+        // Verifica quale ChoiceBox ha generato l'evento
+        if (event.getSource() == choiceBoxEx1_1) {
+            selectedValue = choiceBoxEx1_1.getValue();
+            selectedId = "choiceBoxEx1_1";
+        } else if (event.getSource() == choiceBoxEx1_2) {
+            selectedValue = choiceBoxEx1_2.getValue();
+            selectedId = "choiceBoxEx1_2";
+        } else if (event.getSource() == choiceBoxEx1_3) {
+            selectedValue = choiceBoxEx1_3.getValue();
+            selectedId = "choiceBoxEx1_3";
         }
-    }
 
-    public void loadExercises() throws IOException {
-        // Carica la scena principale di Sortino
-        Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoMainView.fxml");
-    }
-
-    public void startEx1() throws IOException {
-        System.out.println("Starting exercise 1...");
-
-        // Carica e imposta la scena correttamente
-        Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoEx1_1.fxml");
-
-
-        // Il ChoiceBox viene ora inizializzato correttamente
+        // Stampa il valore selezionato e l'ID dell'elemento
+        if (selectedValue != null) {
+            System.out.println("Selezionato: " + selectedValue + " da " + selectedId);
+        }
     }
 }
