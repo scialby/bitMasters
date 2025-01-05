@@ -1,13 +1,18 @@
 package com.pizzagpt.sortino;
 
 import com.pizzagpt.Paths;
-import com.pizzagpt.Utils;
+import com.pizzagpt.Main;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Label;
 import com.pizzagpt.sortino.TutorialController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -41,8 +46,7 @@ public class SortinoLoader {
         choiceBoxEx1_3.setOnAction(this::onChoiceBoxAction);
     }
 
-    @FXML
-    private Label tutorialText;
+
 
 
     // Metodo per gestire la selezione degli elementi nei ChoiceBox
@@ -67,9 +71,22 @@ public class SortinoLoader {
         if (selectedValue != null) {
             String id=selectedId+"_"+selectedValue;
             try {
-                Utils.setScene(Paths.TUTORIAL);
-                TutorialController tutorial = new TutorialController();
-                tutorial.setLabelText("TESTTOOOOO");
+                // Carica il file FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.TUTORIAL));
+                Pane root = loader.load();
+
+                // Ottieni il controller per accedere ai suoi metodi
+                TutorialController controller = loader.getController();
+
+                // Modifica il contenuto del Text tramite il controller
+                controller.changeText("Nuovo testo ded!");
+
+                // Imposta la scena
+                Scene scene = new Scene(root);
+                Main.stg.setScene(scene);
+                Main.stg.show();
+
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

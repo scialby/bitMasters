@@ -18,12 +18,12 @@ public class Utils {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
 
         Pane loadedContent = fxmlLoader.load();
+
         Scene scene = new Scene(loadedContent);
         scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(Paths.CSS)).toExternalForm()); //Applica il CSS giusto
         Main.stg.setScene(scene);
         Main.stg.show();
     }
-
     public static void setScene(String path, int windowWidth, int windowHeight) throws IOException {
         //DIFFERENZA: si può specificare la dimensione della finestra nei parametri della funzione. Ti ho lasciato il codice per evitare problemi
 
