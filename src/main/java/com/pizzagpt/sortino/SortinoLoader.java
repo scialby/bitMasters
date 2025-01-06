@@ -19,6 +19,9 @@ import java.io.IOException;
 import static com.pizzagpt.LoggerManager.debug;
 
 public class SortinoLoader {
+    //settaggio playerScore
+    @FXML
+    private Label playerScoreLabel;
 
     // Dichiarazione dei ChoiceBox,(ogni choicebox avrà selezionabile il livello facile,medio,difficile)
     @FXML
@@ -46,6 +49,9 @@ public class SortinoLoader {
         choiceBoxEx1_1.setOnAction(this::onChoiceBoxAction);
         choiceBoxEx1_2.setOnAction(this::onChoiceBoxAction);
         choiceBoxEx1_3.setOnAction(this::onChoiceBoxAction);
+
+        // Settaggio del playerScore
+        playerScoreLabel.setText("Punteggio: " + Main.playerScore);
     }
 
 
@@ -75,7 +81,8 @@ public class SortinoLoader {
             debug("Esercizio selezionato: " + id);
             try {
                 TutorialController c = new TutorialController();
-                c.changeTutorialText(id);
+                Main.exId=id;
+                c.changeTutorialText();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

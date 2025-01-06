@@ -22,7 +22,7 @@ public class Main extends Application {
     public static Utils util; // Oggetto di utilità
     public static int windowWidth = 1000; // Larghezza finestra predefinita
     public static int windowHeight = 600; // Altezza finestra predefinita
-
+    public static String exId = "1_1"; // ID dell'esercizio corrente
     // da che view parte il programma
     private String firstViewPath = "/com.pizzagpt/scenes/userSession/MainView.fxml";
 

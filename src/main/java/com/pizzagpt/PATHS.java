@@ -24,6 +24,7 @@ public final class PATHS {
     public final static String SORTINO_MAIN = SORTINO_SCENES + "SortinoMain.fxml"; // Percorso per le viste della scena "Sortino"
     public final static String TUTORIAL = SORTINO_SCENES + "Tutorial.fxml";
 
+
     private PATHS() {
         // Costruttore privato per evitare l'istanza della classe
     }

@@ -12,15 +12,16 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import static com.pizzagpt.Main.util;
 import static com.pizzagpt.LoggerManager.debug;
+import static com.pizzagpt.Utils.setScene;
 
 public class TutorialController {
 
     @FXML
     private Text content; // Collegato al FXML tramite fx:id
 
-    public void changeTutorialText(String id) throws IOException {
+    public void changeTutorialText() throws IOException {
         // Carica il file FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource(PATHS.TUTORIAL));
         Pane root = null;
@@ -36,7 +37,7 @@ public class TutorialController {
         // Ottieni il contenuto del testo dal file json, basandoti sull'ID dell'esercizio
 
         // Modifica il contenuto del Text tramite il controller
-        controller.changeText(TutorialController.getTutorialText(id));
+        controller.changeText(TutorialController.getTutorialText(Main.exId));
 
         // Imposta la scena
         Scene scene = new Scene(root);
@@ -65,4 +66,24 @@ public class TutorialController {
 
     }
 
+    // Metodi per la navigazione chiamati dai bottoni nella view
+    public void setHomepageView(){
+        System.out.println("Ritorno alla homepage");
+        try {
+            setScene(PATHS.SORTINO_MAIN);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void startExercise(){
+
+        try {
+
+            String exPath = PATHS.SORTINO_SCENES+"Ex"+Main.exId+".fxml";
+            debug("Starting exercise: " + exPath);
+            setScene(PATHS.SORTINO_SCENES+"Ex"+Main.exId+".fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
