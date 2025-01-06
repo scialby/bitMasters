@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 import javafx.scene.shape.Path;
 
 public class MarchesiniExerciseLoader extends MarchesiniLoader {
@@ -51,7 +51,7 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
     //Carica il salvataggio
     public void loadSave() {
         try {
-            Scanner read = new Scanner(new File(Paths.MARCHESINI_SAVES + "user" + getUser().getId() + "/cat" + category + ".txt"));
+            Scanner read = new Scanner(new File(PATHS.MARCHESINI_SAVES + "user" + getUser().getId() + "/cat" + category + ".txt"));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
                 String[] tokens = line.split(SPLITTER);
@@ -69,7 +69,7 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
     //Carica i tasti di navigazione
     public void loadNavigation() {
         //Variabili
-        String path = Paths.RESOURCES + Paths.MARCHESINI_VIEWS + category + "/Es";
+        String path = PATHS.RESOURCES + PATHS.MARCHESINI_VIEWS + category + "/Es";
         File previousFile = new File(path + (exercise-1) + ".txt");
         File nextFile = new File(path + (exercise+1) + ".txt");
         Button previousBtn = (Button)Main.stg.getScene().lookup("#previous");

@@ -20,7 +20,7 @@ public class Utils {
         Pane loadedContent = fxmlLoader.load();
 
         Scene scene = new Scene(loadedContent);
-        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(Paths.CSS)).toExternalForm()); //Applica il CSS giusto
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm()); //Applica il CSS giusto
         Main.stg.setScene(scene);
         Main.stg.show();
     }

@@ -1,7 +1,7 @@
 package com.pizzagpt.userSession;
 
 import com.pizzagpt.Main;
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 import com.pizzagpt.Utils;
 import com.pizzagpt.marchesini.MarchesiniExerciseLoader;
 import javafx.event.ActionEvent;
@@ -48,7 +48,7 @@ public class SessionController implements Initializable {
     public void startSortino(){
         debug("avvio esercizi sortino");
         try {
-            Utils.setScene(Paths.SORTINO_MAIN);
+            Utils.setScene(PATHS.SORTINO_MAIN);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -59,7 +59,7 @@ public class SessionController implements Initializable {
     }
     // Login
     public void toLogin() throws IOException {
-        Utils.setScene(Paths.LOGIN_SCENE); // Utilizzato Paths per il percorso
+        Utils.setScene(PATHS.LOGIN_SCENE); // Utilizzato PATHS per il percorso
     }
 
     public void loginHandler(ActionEvent event) throws IOException {
@@ -87,7 +87,7 @@ public class SessionController implements Initializable {
 
     // Register
     public void toRegister() throws IOException {
-        Utils.setScene(Paths.REGISTER_SCENE); // Utilizzato Paths per il percorso
+        Utils.setScene(PATHS.REGISTER_SCENE); // Utilizzato PATHS per il percorso
     }
 
     public void registerHandler(ActionEvent event) throws IOException {
@@ -97,7 +97,7 @@ public class SessionController implements Initializable {
             users.fromFile();
             User user = new User(username, password);
             if (users.addUser(user)) { // Crea il nuovo utente e accede
-                new File(Paths.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
+                new File(PATHS.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
                 users.toFile();
                 loginHandler(event);
             } else {

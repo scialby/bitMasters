@@ -1,7 +1,7 @@
 package com.pizzagpt.userSession;
 
 import com.pizzagpt.Main;
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,7 +50,7 @@ public class User {
     private int generateId() { //Crea ID tenendo conto di quelli già assegnati
         int id = 0;
         try {
-            Scanner read = new Scanner(new File(Paths.ACCOUNTS));
+            Scanner read = new Scanner(new File(PATHS.ACCOUNTS));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
                 if(!line.isBlank()) {

@@ -1,7 +1,7 @@
 package com.pizzagpt.marchesini;
 
 import com.pizzagpt.Main;
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 import com.pizzagpt.Utils;
 import com.pizzagpt.userSession.SessionController;
 import com.pizzagpt.userSession.User;
@@ -28,7 +28,7 @@ public class Controller implements Initializable {
 
     public void writeToFile(String[] tokens, String choice) {
         try {
-            PrintWriter write = new PrintWriter(Paths.MARCHESINI_SAVES + "user" + user.getId() + "/" + tokens[0] + ".txt");
+            PrintWriter write = new PrintWriter(PATHS.MARCHESINI_SAVES + "user" + user.getId() + "/" + tokens[0] + ".txt");
             write.println(tokens[1] + "," + choice);
             write.close();
         } catch(FileNotFoundException ex) {

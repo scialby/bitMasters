@@ -1,6 +1,6 @@
 package com.pizzagpt.userSession;
 
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +30,7 @@ public class UserManager {
     public boolean addUser(User user) {
         if (!exists(user)) {
             users.add(user);
-            new File(Paths.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
+            new File(PATHS.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
             return true;
         }
         return false;
@@ -48,7 +48,7 @@ public class UserManager {
     // Salva la lista di utenti in un file
     public boolean toFile() {
         try {
-            PrintWriter pw = new PrintWriter(Paths.ACCOUNTS);
+            PrintWriter pw = new PrintWriter(PATHS.ACCOUNTS);
             for (User user : users) {
                 pw.println(user.getUsername() + SPLITTER + user.getPassword() + SPLITTER + user.getId());
             }
@@ -63,7 +63,7 @@ public class UserManager {
     // Legge la lista di utenti da un file
     public boolean fromFile() {
         try {
-            Scanner read = new Scanner(new File(Paths.ACCOUNTS));
+            Scanner read = new Scanner(new File(PATHS.ACCOUNTS));
             while (read.hasNextLine()) {
                 String line = read.nextLine();
                 String[] tokens = line.split(SPLITTER);

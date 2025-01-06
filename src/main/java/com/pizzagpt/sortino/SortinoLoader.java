@@ -1,6 +1,6 @@
 package com.pizzagpt.sortino;
 
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 import com.pizzagpt.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -15,6 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static com.pizzagpt.LoggerManager.debug;
 
 public class SortinoLoader {
 
@@ -70,26 +72,17 @@ public class SortinoLoader {
         // Stampa il valore selezionato e l'ID dell'elemento
         if (selectedValue != null) {
             String id=selectedId+"_"+selectedValue;
+            debug("Esercizio selezionato: " + id);
             try {
-                // Carica il file FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.TUTORIAL));
-                Pane root = loader.load();
-
-                // Ottieni il controller per accedere ai suoi metodi
-                TutorialController controller = loader.getController();
-
-                // Modifica il contenuto del Text tramite il controller
-                controller.changeText("Nuovo testo ded!");
-
-                // Imposta la scena
-                Scene scene = new Scene(root);
-                Main.stg.setScene(scene);
-                Main.stg.show();
-
-
+                TutorialController c = new TutorialController();
+                c.changeTutorialText(id);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
+
         }
     }
+
+
 }

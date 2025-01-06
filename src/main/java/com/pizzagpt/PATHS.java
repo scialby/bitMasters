@@ -1,7 +1,7 @@
 package com.pizzagpt;
 
 // PATHS
-public final class Paths {
+public final class PATHS {
 
     // GENERALI
     public final static String RESOURCES = "src/main/resources"; // Directory delle risorse principali
@@ -20,10 +20,11 @@ public final class Paths {
     public final static String MARCHESINI_CSS = MARCHESINI + "style.css"; // Percorso per il CSS della scena "Marchesini"
 
     // SORTINO
-    public final static String SORTINO = SCENES_PATH + "sortino/"; // Percorso base per la scena "Sortino"
-    public final static String SORTINO_MAIN = SORTINO + "SortinoMain.fxml"; // Percorso per le viste della scena "Sortino"
-    public final static String TUTORIAL = SORTINO + "Tutorial.fxml";
-    private Paths() {
+    public final static String SORTINO_SCENES = SCENES_PATH + "sortino/"; // Percorso base per la scena "Sortino"
+    public final static String SORTINO_MAIN = SORTINO_SCENES + "SortinoMain.fxml"; // Percorso per le viste della scena "Sortino"
+    public final static String TUTORIAL = SORTINO_SCENES + "Tutorial.fxml";
+
+    private PATHS() {
         // Costruttore privato per evitare l'istanza della classe
     }
 }

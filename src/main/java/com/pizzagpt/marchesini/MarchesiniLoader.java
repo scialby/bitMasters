@@ -1,7 +1,7 @@
 package com.pizzagpt.marchesini;
 
 import com.pizzagpt.Main;
-import com.pizzagpt.Paths;
+import com.pizzagpt.PATHS;
 import com.pizzagpt.userSession.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -28,7 +28,7 @@ public abstract class MarchesiniLoader {
     public MarchesiniLoader(String path, User user) throws IOException {
         this.path = path;
         this.user = user;
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(Paths.MARCHESINI_VIEWS + path)); //Imposta il percorso
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(PATHS.MARCHESINI_VIEWS + path)); //Imposta il percorso
         loadedContent = fxmlLoader.load(); //Carica il contenuto del percorso
         controller = fxmlLoader.getController();
         controller.setUser(user); //Passa l'utente della sessione
@@ -37,14 +37,14 @@ public abstract class MarchesiniLoader {
         overlay = new StackPane(); //Crea caricamento
         overlay.getStyleClass().add("loading");
         imageView = new ImageView(); //Crea loading-gif
-        imageView.setImage(new Image("file:" + Paths.MARCHESINI_IMAGES + "loading-gif.gif")); //Carica l'immagine e poi la imposta
+        imageView.setImage(new Image("file:" + PATHS.MARCHESINI_IMAGES + "loading-gif.gif")); //Carica l'immagine e poi la imposta
         imageView.setFitWidth(70);
         imageView.setPreserveRatio(true);
         overlay.getChildren().add(imageView); //Aggiunge gif al caricamento
         root.getChildren().add(overlay); //Aggiunge il caricamento
         scene = new Scene(root); //Crea la scena
         scene.getStylesheets().clear(); //Toglie eventuali altri file CSS
-        scene.getStylesheets().add(getClass().getResource(Paths.MARCHESINI_CSS).toExternalForm()); //Applica il CSS giusto
+        scene.getStylesheets().add(getClass().getResource(PATHS.MARCHESINI_CSS).toExternalForm()); //Applica il CSS giusto
     }
 
     //Getter
