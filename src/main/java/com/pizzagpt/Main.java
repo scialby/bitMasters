@@ -20,8 +20,8 @@ public class Main extends Application {
     public static Label playerScoreLabel; // Etichetta per visualizzare il punteggio
     public static Stage stg; // Stage principale dell'applicazione
     public static Utils util; // Oggetto di utilità
-    public static int windowWidth = 1000; // Larghezza finestra predefinita
-    public static int windowHeight = 600; // Altezza finestra predefinita
+    public static int windowWidth = 1280; // Larghezza finestra predefinita
+    public static int windowHeight = 720; // Altezza finestra predefinita
     public static String exId = "1_1"; // ID dell'esercizio corrente
     // da che view parte il programma
     private String firstViewPath = "/com.pizzagpt/scenes/userSession/MainView.fxml";

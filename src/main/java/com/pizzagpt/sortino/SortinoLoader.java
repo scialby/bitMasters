@@ -8,7 +8,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Label;
-import com.pizzagpt.sortino.TutorialController;
+import com.pizzagpt.sortino.ExerciseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
@@ -80,7 +80,7 @@ public class SortinoLoader {
             String id=selectedId+"_"+selectedValue;
             debug("Esercizio selezionato: " + id);
             try {
-                TutorialController c = new TutorialController();
+                ExerciseController c = new ExerciseController();
                 Main.exId=id;
                 c.changeTutorialText();
             } catch (IOException e) {

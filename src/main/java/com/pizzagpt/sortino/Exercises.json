@@ -1,0 +1,8 @@
+{
+  "1_1":{
+    "tutorialText": "Scegliere il completamento corretto.\n il codice deve restituire la somma di due numeri",
+    "img": "src/main/resources/com.pizzagpt/images/sortinoEx1/ex1_1.png"
+  },
+  "1_2":"contenuto 2_2"
+
+}

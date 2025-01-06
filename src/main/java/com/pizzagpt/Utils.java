@@ -16,7 +16,9 @@ public class Utils {
     public static void setScene(String path) throws IOException {
         //DIFFERENZA: carica il file con la dimensione default.
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
-
+        //imposto le dimensioni della finestra
+        Main.stg.setWidth(Main.windowWidth);
+        Main.stg.setHeight(Main.windowHeight);
         Pane loadedContent = fxmlLoader.load();
 
         Scene scene = new Scene(loadedContent);
