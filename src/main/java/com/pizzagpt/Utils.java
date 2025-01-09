@@ -2,7 +2,6 @@ package com.pizzagpt;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;  // Importa il tipo Pane
@@ -22,7 +21,7 @@ public class Utils {
         Pane loadedContent = fxmlLoader.load();
 
         Scene scene = new Scene(loadedContent);
-        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm()); //Applica il CSS giusto
+        scene.getStylesheets().add(Utils.class.getResource(Globals.css).toExternalForm()); //Applica il CSS giusto
         Main.stg.setScene(scene);
         Main.stg.show();
     }

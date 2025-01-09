@@ -1,7 +1,6 @@
 package com.pizzagpt;
 
 import com.pizzagpt.sortino.SortinoLoader;
-import com.pizzagpt.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
