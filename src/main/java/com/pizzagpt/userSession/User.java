@@ -1,5 +1,6 @@
 package com.pizzagpt.userSession;
 
+import com.pizzagpt.Globals;
 import com.pizzagpt.Main;
 
 import java.io.File;
@@ -49,11 +50,11 @@ public class User {
     private int generateId() { //Crea ID tenendo conto di quelli già assegnati
         int id = 0;
         try {
-            Scanner read = new Scanner(new File(Main.accounts));
+            Scanner read = new Scanner(new File(Globals.accounts));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
                 if(!line.isBlank()) {
-                    String[] tokens = line.split(Main.splitter);
+                    String[] tokens = line.split(Globals.splitter);
                     id = Integer.parseInt(tokens[2]);
                 }
             }

@@ -1,33 +1,76 @@
 package com.pizzagpt.marchesini;
 
-import com.pizzagpt.Main;
-import com.pizzagpt.Utils;
+import com.pizzagpt.*;
 import com.pizzagpt.userSession.SessionController;
+import com.pizzagpt.userSession.SessionLoader;
 import com.pizzagpt.userSession.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+// Classe controller per la gestione delle Scene di Marchesini
+public class Controller implements ControllerInterface, Initializable {
 
+    // Variabile
+    private int category, exercise;
     private User user;
 
+    // Initialize
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+
+    // ControllerInterface
+    @Override
     public void setUser(User user) {
         this.user = user;
+    }
+    @Override
+    public void logOut() {
+        try {
+            Utils.setScene(Globals.login_scene);
+        } catch (IOException ex) {
+            System.out.println("[Eccezione: " + ex + "] E' stato riscontrato un problema.");
+        }
+    }
+
+    // Estrapola la categoria ed esercizio in cui presente
+    public void setInfo(int category, int exercise) {
+        this.category = category;
+        this.exercise = exercise;
+    }
+
+    // Scri
+
+    // Aggiorna le progress-bar se presenti
+    //TODO: Caricare le progress bar degli esercizi
+    public void loadProgress() {
+    }
+
+    // Porta all'esercizio selezionato
+    public void toExercise(ActionEvent event) throws IOException {
+        Button btn = (Button)event.getSource();
+        new MarchesiniExerciseLoader(user, Integer.parseInt(btn.getId().substring(3)), 1);
+    }
+    public void toMainMenu() throws IOException {
+        new SessionLoader(user, Globals.main_menu);
+    }
+    public void toSelection() throws IOException {
+        MarchesiniLoader loader = new MarchesiniLoader(user, "Selection.fxml");
     }
 
     public void writeToFile(String[] tokens, String choice) {
         try {
-            PrintWriter write = new PrintWriter(Main.marchesini_saves + "user" + user.getId() + "/" + tokens[0] + ".txt");
+            PrintWriter write = new PrintWriter(Globals.marchesini_saves + "user" + user.getId() + "/" + tokens[0] + ".txt");
             write.println(tokens[1] + "," + choice);
             write.close();
         } catch(FileNotFoundException ex) {
@@ -35,27 +78,16 @@ public class Controller implements Initializable {
         }
     }
 
-    //---------------------------------------//
-    // Ritorna alla selezione degli esercizi //
-    //---------------------------------------//
-    public void goToSelection() throws IOException {
-        System.out.println("Torna al menu (loginscreen come placeholder)");
-        Utils.setScene("/com.pizzagpt/scenes/userSession/LoginScene.fxml");
-    }
-
-    //---------------------------------//
-    // Precedente / Prossimo esercizio //
-    //---------------------------------//
+    // Precedente e prossimo esercizio
     //TODO: Sistemare perché funzioni
     public void navigationControl(ActionEvent event) throws IOException {
         Button btn = (Button)event.getSource(); //Determina qual è il tasto cliccato
         String id = btn.getId(); //Estrapola l'ID del button
-        String[] tokens = btn.getParent().getParent().getId().split("_"); //Estrapola le informazioni dell'esercizio corrente
-        int temp = 1;
         if(id.equals("previous")) {
-            temp = -1;
+            new MarchesiniExerciseLoader(user, 1, exercise-1);
+        } else {
+            new MarchesiniExerciseLoader(user, 1, exercise+1);
         }
-        //Utilities.loadScene(("cat" + Integer.parseInt(tokens[0]) + "/Es" + Integer.parseInt(tokens[1])) + ".fxml");
     }
 
     //-------------------------------------------------------//
@@ -83,9 +115,5 @@ public class Controller implements Initializable {
             btn.getStyleClass().add("correct");
         }
         writeToFile(tokens, choice);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 }

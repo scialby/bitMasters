@@ -1,5 +1,7 @@
 package com.pizzagpt.marchesini;
 
+import com.pizzagpt.Globals;
+import com.pizzagpt.Loader;
 import com.pizzagpt.Main;
 import com.pizzagpt.userSession.User;
 import javafx.scene.control.Button;
@@ -9,31 +11,42 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MarchesiniExerciseLoader extends MarchesiniLoader {
+// Classe apposita per cambiare la scena all'esercizio specificato nella cartella Marchesini
+public class MarchesiniExerciseLoader extends Loader {
 
-    //Variabili
+    // Variabili
     private int category, exercise;
+    private Controller controller;
 
+    // Costruttore
     public MarchesiniExerciseLoader(User user, int category, int exercise) throws IOException {
-        super("cat" + category + "/Es" + exercise + ".fxml", user);
+        super(user, Globals.marchesini_views + "cat" + category + "/Es" + exercise + ".fxml");
         this.category = category;
         this.exercise = exercise;
         show();
         setTitle();
+        controller = (Controller)super.getController();
+        controller.setUser(user);
+        controller.setInfo(category, exercise);
+        setCss(Globals.marchesini_css);
         loadSave();
         loadNavigation();
         start();
     }
 
-    //Getter
+    // Getter
     public int getCategory() {
         return category;
     }
     public int getExercise() {
         return exercise;
     }
+    @Override
+    public Controller getController() {
+        return controller;
+    }
 
-    //Setter
+    // Setter
     public void setCategory(int category) {
         this.category = category;
     }
@@ -41,18 +54,19 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
         this.exercise = exercise;
     }
 
-    //Imposta il titolo della finestra
+    // Imposta il titolo della finestra
     public void setTitle() {
         Main.stg.setTitle("Categoria " + category + ", Esercizio " + exercise);
     }
 
     //Carica il salvataggio
+    //TODO: Cambiare e provare ad utilizzare lo UserManager per comparare anziché ogni volta riprendere dal file
     public void loadSave() {
         try {
-            Scanner read = new Scanner(new File(Main.marchesini_saves + "user" + getUser().getId() + "/cat" + category + ".txt"));
+            Scanner read = new Scanner(new File(Globals.marchesini_saves + "user" + getUser().getId() + "/cat" + category + ".txt"));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
-                String[] tokens = line.split(Main.splitter);
+                String[] tokens = line.split(Globals.splitter);
                 if(exercise == Integer.parseInt(tokens[0])) {
                     Button btn = (Button)Main.stg.getScene().lookup("#" + tokens[1]);
                     btn.fire();
@@ -64,21 +78,28 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
         }
     }
 
-    //Carica i tasti di navigazione
+    // Carica i tasti di navigazione
+    //TODO: Riscrivere e controllare
     public void loadNavigation() {
         //Variabili
-        String path = Main.resources + Main.marchesini_views + category + "/Es";
-        File previousFile = new File(path + (exercise-1) + ".txt");
-        File nextFile = new File(path + (exercise+1) + ".txt");
+        String path = Globals.resources + Globals.marchesini_views + "cat" + category + "/Es";
+        File previousFile = new File(path + (exercise-1) + ".fxml");
+        File nextFile = new File(path + (exercise+1) + ".fxml");
         Button previousBtn = (Button)Main.stg.getScene().lookup("#previous");
         Button nextBtn = (Button)Main.stg.getScene().lookup("#next");
 
+        System.out.println(previousFile.getPath());
         //Controllo precedente
         if(!previousFile.exists()) { //Se non trova disabilita
+            System.out.println("Non esiste il precedente");
             previousBtn.setDisable(true);
+        } else {
+            System.out.println("Esiste il precedente");
         }
+        System.out.println(nextFile.getPath());
         //Controllo successivo
         if(!nextFile.exists()) { //Se non trova manda al completamento
+            System.out.println("Non esiste il successivo");
             nextBtn.getStyleClass().remove("navigation");
             nextBtn.getStyleClass().add("option");
             nextBtn.setText("Consegna");
@@ -87,6 +108,8 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
                 //MarchesiniCompletedLoader completedLoader = new MarchesiniCompletedLoader();
                 //completedLoader.start();
             });
+        } else {
+            System.out.println("Esiste il successivo");
         }
     }
 }

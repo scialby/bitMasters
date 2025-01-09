@@ -1,6 +1,6 @@
 package com.pizzagpt.userSession;
 
-import com.pizzagpt.Main;
+import com.pizzagpt.Globals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +30,7 @@ public class UserManager {
     public boolean addUser(User user) {
         if(!exists(user)) {
             users.add(user);
-            new File(Main.marchesini_saves + "user" + user.getId()).mkdir();
+            new File(Globals.marchesini_saves + "user" + user.getId()).mkdir();
             return true;
         }
         return false;
@@ -45,9 +45,9 @@ public class UserManager {
 
     public boolean toFile() { //ArrayList to File
         try {
-            PrintWriter pw = new PrintWriter(Main.accounts);
+            PrintWriter pw = new PrintWriter(Globals.accounts);
             for(User user : users) {
-                pw.println(user.getUsername() + Main.splitter + user.getPassword() + Main.splitter + user.getId());
+                pw.println(user.getUsername() + Globals.splitter + user.getPassword() + Globals.splitter + user.getId());
             }
             pw.close();
         } catch(FileNotFoundException ex) {
@@ -59,10 +59,10 @@ public class UserManager {
 
     public boolean fromFile() { //File to ArrayList
         try {
-            Scanner read = new Scanner(new File(Main.accounts));
+            Scanner read = new Scanner(new File(Globals.accounts));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
-                String[] tokens = line.split(Main.splitter);
+                String[] tokens = line.split(Globals.splitter);
                 users.add(new User(tokens[0], tokens[1], Integer.parseInt(tokens[2])));
             }
             read.close();
