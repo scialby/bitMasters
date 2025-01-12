@@ -15,9 +15,10 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
     private String SPLITTER = ",";
     //Variabili
     private int category, exercise;
-    private
-    MarchesiniExerciseLoader(User user, int category, int exercise) throws IOException {
-        super("cat" + category + "/Es" + exercise + ".fxml", user);
+
+    //Costruttore
+    public MarchesiniExerciseLoader(User user, int category, int exercise) throws IOException {
+        super(user, "cat" + category + "/Es" + exercise + ".fxml");
         this.category = category;
         this.exercise = exercise;
         show();

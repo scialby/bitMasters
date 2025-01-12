@@ -1,7 +1,6 @@
 package com.pizzagpt.userSession;
 
 import com.pizzagpt.PATHS;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -12,8 +11,9 @@ public class UserManager {
     private String SPLITTER = ",";
     private ArrayList<User> users;
 
+    // Costruttore
     public UserManager() {
-        users = new ArrayList<>();
+        users = new ArrayList<User>();
     }
 
     // Getter
@@ -28,7 +28,7 @@ public class UserManager {
 
     // Aggiunge un nuovo utente se non esiste già
     public boolean addUser(User user) {
-        if (!exists(user)) {
+        if(!exists(user)) {
             users.add(user);
             new File(PATHS.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
             return true;
@@ -39,8 +39,8 @@ public class UserManager {
     // Controlla se l'utente esiste già
     public boolean exists(User user) {
         String username = user.getUsername();
-        for (User i : users) {
-            if (i.getUsername().equals(username)) return true;
+        for(User i : users) {
+            if(i.getUsername().equals(username)) return true;
         }
         return false;
     }
@@ -49,7 +49,7 @@ public class UserManager {
     public boolean toFile() {
         try {
             PrintWriter pw = new PrintWriter(PATHS.ACCOUNTS);
-            for (User user : users) {
+            for(User user : users) {
                 pw.println(user.getUsername() + SPLITTER + user.getPassword() + SPLITTER + user.getId());
             }
             pw.close();
@@ -69,9 +69,9 @@ public class UserManager {
                 String[] tokens = line.split(SPLITTER);
                 users.add(new User(tokens[0], tokens[1], Integer.parseInt(tokens[2])));
             }
+            if (users.isEmpty()) { return false; }
             read.close();
         } catch (FileNotFoundException ex) {
-            System.out.println("File non trovato. [Eccezione " + ex + "]");
             return false;
         }
         return true;

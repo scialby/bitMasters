@@ -8,7 +8,7 @@
    <children>
       <VBox alignment="CENTER" layoutY="296.0" styleClass="inputbuttons">
          <children>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginHandler" prefHeight="51.0" prefWidth="85.0" styleClass="submit" text="ACCEDI">
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginHandler" prefHeight="51.0" prefWidth="85.0" styleClass="btn" text="ACCEDI">
                <font>
                   <Font size="16.0" />
                </font>

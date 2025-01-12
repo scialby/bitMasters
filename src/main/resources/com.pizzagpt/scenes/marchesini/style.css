@@ -4,6 +4,7 @@
     -green-txt: #00ad06;
     -red-bg: #ffc8c8;
     -red-txt: #ff0000;
+    -light-gray-bg: rgb(248, 248, 248);
     -gray-bg: #ebebeb;
     -gray-txt: #868686;
 }
@@ -11,12 +12,41 @@
 .root {
     -fx-background-color: white;
 }
+.button:hover {
+    -fx-cursor: hand;
+}
 .button:pressed {
     -fx-scale-x: 0.8;
     -fx-scale-y: 0.8;
 }
 
+/* Pulsanti di uscita */
+.button.exit {
+    -fx-background-color: -red-bg;
+    -fx-text-fill: -red-txt;
+}
+.button.exit:hover {
+    -fx-background-color: -red-txt;
+    -fx-text-fill: -red-bg;
+}
+
 /*----------------------------------------------------------------------------*/
+/* MENU DI SELEZIONE
+
+/* Footer */
+.footer {
+    -fx-spacing: 75;
+    -fx-background-color: -light-gray-bg;
+    -fx-effect: dropshadow(three-pass-box, -gray-txt, 50.0, 0.0, 0.0, 0.0);
+}
+.chapter {
+    -fx-border-color: -gray-bg;
+    -fx-border-radius: 0;
+    -fx-border-width: 1;
+}
+
+/*----------------------------------------------------------------------------*/
+/* MENU DI SELEZIONE
 
 /* Caricamento */
 .loading {
@@ -59,19 +89,6 @@
 }
 .button.navigation:disabled {
     -fx-opacity: 0.5;
-}
-
-/* Esci dal programma */
-.button.exit {
-    -fx-background-color: -red-bg;
-    -fx-text-fill: -red-txt;
-}
-.button.exit:hover {
-    -fx-background-color: -red-txt;
-    -fx-text-fill: -red-bg;
-}
-.button.close {
-    -fx-background-radius: 0;
 }
 
 /* Indicatore degli esercizi */
