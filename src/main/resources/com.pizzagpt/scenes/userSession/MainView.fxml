@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.userSession.SessionController">
-   <children>
-      <!-- Titolo della schermata -->
-      <Label alignment="CENTER" layoutX="150.0" layoutY="20.0" prefHeight="51.0" prefWidth="300.0" text="SCEGLI UN'OPZIONE" textAlignment="CENTER">
-         <font>
-            <Font name="Leelawadee UI Bold" size="30.0" />
-         </font>
-      </Label>
-
-      <!-- Box per avviare Sortino -->
-      <VBox fx:id="sortinoBox" alignment="CENTER" layoutX="50.0" layoutY="100.0" onMouseClicked="#startSortino" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #f0f0f0; -fx-background-radius: 10;">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.userSession.SessionController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" onMouseClicked="#startSortino" text="Sortino" textAlignment="CENTER">
+            <Label text="SELEZIONA LA TIPOLOGIA">
                <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-            </Label>
+                  <Font name="Leelawadee UI Bold" size="32.0" />
+               </font></Label>
          </children>
-      </VBox>
-
-      <!-- Box per avviare Marchesini -->
-      <VBox fx:id="marchesiniBox" alignment="CENTER" layoutX="350.0" layoutY="100.0" onMouseClicked="#startMarchesini" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #f0f0f0; -fx-background-radius: 10;">
+      </HBox>
+   </top>
+   <center>
+      <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+        </rowConstraints>
          <children>
-            <Label alignment="CENTER" text="Marchesini" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#startSortino" prefHeight="200.0" prefWidth="200.0" text="SORTINO">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-round" />
+               </styleClass>
                <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-            </Label>
+                  <Font size="27.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#startMarchesini" prefHeight="200.0" prefWidth="200.0" text="MARCHESINI" GridPane.columnIndex="1">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-round" />
+               </styleClass>
+               <font>
+                  <Font size="27.0" />
+               </font></Button>
          </children>
-      </VBox>
-   </children>
-</AnchorPane>
+      </GridPane>
+   </center>
+</BorderPane>

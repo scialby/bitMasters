@@ -1,18 +1,11 @@
 package com.pizzagpt;
 
-import com.pizzagpt.sortino.SortinoLoader;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-
 public class Main extends Application {
-
-
-
 
     // Variabili globali per stato e configurazione
     public static int playerScore = 0; // Punteggio del giocatore
@@ -23,20 +16,13 @@ public class Main extends Application {
     public static int windowHeight = 720; // Altezza finestra predefinita
     public static String exId = "1_1"; // ID dell'esercizio corrente
     // da che view parte il programma
-    private String firstViewPath = "/com.pizzagpt/scenes/userSession/MainView.fxml";
+    private final String firstViewPath = PATHS.LOGIN_SCENE;
 
-    /**
-     * Metodo principale che avvia l'applicazione.
-     *
-     * @param primaryStage Stage principale passato da JavaFX.
-     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         stg = primaryStage; // Imposta lo stage globale
-        util.setScene(firstViewPath); // Carica la scena principale (Login)
+        Utils.setScene(firstViewPath); // Carica la scena principale (Login)
     }
-
-
 
     /**
      * Metodo principale del programma. Lancia l'applicazione JavaFX.

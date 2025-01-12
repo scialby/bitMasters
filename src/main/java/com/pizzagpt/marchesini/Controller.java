@@ -1,5 +1,8 @@
 package com.pizzagpt.marchesini;
 
+import com.pizzagpt.Main;
+import com.pizzagpt.PATHS;
+import com.pizzagpt.Utils;
 import com.pizzagpt.*;
 import com.pizzagpt.userSession.SessionController;
 import com.pizzagpt.userSession.SessionLoader;
@@ -37,7 +40,7 @@ public class Controller implements ControllerInterface, Initializable {
     @Override
     public void logOut() {
         try {
-            Utils.setScene(Globals.login_scene);
+            Utils.setScene(PATHS.LOGIN_SCENE);
         } catch (IOException ex) {
             System.out.println("[Eccezione: " + ex + "] E' stato riscontrato un problema.");
         }
@@ -62,19 +65,22 @@ public class Controller implements ControllerInterface, Initializable {
         new MarchesiniExerciseLoader(user, Integer.parseInt(btn.getId().substring(3)), 1);
     }
     public void toMainMenu() throws IOException {
-        new SessionLoader(user, Globals.main_menu);
+        new SessionLoader(user, PATHS.MARCHESINI_MAIN);
     }
     public void toSelection() throws IOException {
-        MarchesiniLoader loader = new MarchesiniLoader(user, "Selection.fxml");
+        MarchesiniLoader selectionMarchesini = new MarchesiniLoader(user, "Selection.fxml");
+        selectionMarchesini.start();
+        selectionMarchesini.show();
     }
 
     public void writeToFile(String[] tokens, String choice) {
         try {
             PrintWriter write = new PrintWriter(PATHS.MARCHESINI_SAVES + "user" + user.getId() + "/" + tokens[0] + ".txt");
             write.println(tokens[1] + "," + choice);
+            System.out.println("sono nel writetofile");
             write.close();
         } catch(FileNotFoundException ex) {
-            System.out.println("[Eccezione: " + ex + "]");
+            System.out.println("[Eccezione: " + ex + "] nel writeToFile");
         }
     }
 

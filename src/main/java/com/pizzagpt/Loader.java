@@ -1,12 +1,11 @@
 package com.pizzagpt;
 
-import com.pizzagpt.marchesini.Controller;
 import com.pizzagpt.userSession.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public abstract class Loader {
     private User user;
     //Oggetti
     private Object controller;
-    private AnchorPane loadedContent;
+    private Pane loadedContent;
     private StackPane root, overlay;
     private ImageView imageView;
     private Scene scene;
@@ -34,14 +33,14 @@ public abstract class Loader {
         overlay = new StackPane(); //Crea caricamento
         overlay.getStyleClass().add("loading");
         imageView = new ImageView(); //Crea loading-gif
-        imageView.setImage(new Image("file:" + Globals.marchesini_images + "loading-gif.gif")); //Carica l'immagine e poi la imposta
+        imageView.setImage(new Image("file:" + PATHS.MARCHESINI_IMAGES + "loading-gif.gif")); //Carica l'immagine e poi la imposta
         imageView.setFitWidth(70);
         imageView.setPreserveRatio(true);
         overlay.getChildren().add(imageView); //Aggiunge gif al caricamento
         root.getChildren().add(overlay); //Aggiunge il caricamento
         scene = new Scene(root); //Crea la scena
         scene.getStylesheets().clear(); //Toglie eventuali altri file CSS
-        scene.getStylesheets().add(getClass().getResource(Globals.css).toExternalForm()); //Applica il CSS giusto
+        scene.getStylesheets().add(getClass().getResource(PATHS.CSS).toExternalForm()); //Applica il CSS giusto
     }
 
     // Getter

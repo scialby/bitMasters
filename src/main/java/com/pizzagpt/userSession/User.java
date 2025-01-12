@@ -1,6 +1,5 @@
 package com.pizzagpt.userSession;
 
-import com.pizzagpt.Globals;
 import com.pizzagpt.Main;
 import com.pizzagpt.PATHS;
 
@@ -25,7 +24,7 @@ public class User {
         this.id = id;
     }
 
-    //Getter
+    // Getter
     public String getUsername() {
         return username;
     }
@@ -36,7 +35,7 @@ public class User {
         return id;
     }
 
-    //Setter
+    // Setter
     public void setUsername(String username) {
         this.username = username;
     }
@@ -47,8 +46,8 @@ public class User {
         this.id = id;
     }
 
-    //Altro
-    private int generateId() { //Crea ID tenendo conto di quelli già assegnati
+    // Crea ID tenendo conto di quelli già assegnati
+    private int generateId() {
         int id = 0;
         try {
             Scanner read = new Scanner(new File(PATHS.ACCOUNTS));
