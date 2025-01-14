@@ -3,10 +3,7 @@ package com.pizzagpt.userSession;
 import com.pizzagpt.Main;
 import com.pizzagpt.PATHS;
 import com.pizzagpt.Utils;
-import com.pizzagpt.marchesini.MarchesiniExerciseLoader;
 import com.pizzagpt.*;
-import com.pizzagpt.marchesini.Controller;
-import com.pizzagpt.marchesini.MarchesiniLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,16 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 //logs
-import static com.pizzagpt.LoggerManager.LOGGER;
 import static com.pizzagpt.LoggerManager.debug;
-import static com.pizzagpt.LoggerManager.error;
 
 public class SessionController implements Initializable, ControllerInterface {
 
@@ -84,8 +77,8 @@ public class SessionController implements Initializable, ControllerInterface {
     // Inizializza il menu di "Marchesini"
     public void startMarchesini() throws IOException {
         debug("avvio esercizi marchesini");
-        MarchesiniLoader loadMarchesini = new MarchesiniLoader(loggedUser, "Selection.fxml");
-        loadMarchesini.start();
+        Loader loadMarchesini = new Loader(loggedUser, PATHS.MARCHESINI_VIEWS + "Selection.fxml");
+        loadMarchesini.load();
         loadMarchesini.show();
     }
 
@@ -105,7 +98,9 @@ public class SessionController implements Initializable, ControllerInterface {
             for(User user : users.getUsers()) {
                 if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                     loggedUser = new User(username, password, user.getId());
-                    SessionLoader loader = new SessionLoader(loggedUser, PATHS.MAIN_MENU); //Passa l'utente che si è loggato e cambia scena
+                    Loader loader = new Loader(loggedUser, PATHS.MAIN_MENU); //Passa l'utente che si è loggato e cambia scena
+                    loader.load();
+                    loader.show();
                     return;
                 }
             }
@@ -140,10 +135,10 @@ public class SessionController implements Initializable, ControllerInterface {
 
     // Selezione del menù principale
     //TODO: Sistemare
-    public void toMarchesini() throws IOException {
-        MarchesiniLoader loader = new MarchesiniLoader(loggedUser, "Selection.fxml"); //Importa l'utente nel Controller e cambia scena
-        //controller.loadProgress(); //TODO: Da completare
-    }
+//    public void toMarchesini() throws IOException {
+//        MarchesiniLoader loader = new MarchesiniLoader(loggedUser, "Selection.fxml"); //Importa l'utente nel Controller e cambia scena
+//        //controller.loadProgress(); //TODO: Da completare
+//    }
     // Temporaneo
     public void temp() throws IOException {
         Main.util.setScene("/com.pizzagpt/scenes/sortino/SortinoEx1_2.fxml");

@@ -1,5 +1,6 @@
 package com.pizzagpt.marchesini;
 
+import com.pizzagpt.Loader;
 import com.pizzagpt.Main;
 import com.pizzagpt.userSession.User;
 import javafx.scene.control.Button;
@@ -11,21 +12,21 @@ import java.util.Scanner;
 import com.pizzagpt.PATHS;
 import javafx.scene.shape.Path;
 
-public class MarchesiniExerciseLoader extends MarchesiniLoader {
+public class MarchesiniExerciseLoader extends Loader {
     private String SPLITTER = ",";
     //Variabili
     private int category, exercise;
 
     //Costruttore
     public MarchesiniExerciseLoader(User user, int category, int exercise) throws IOException {
-        super(user, "cat" + category + "/Es" + exercise + ".fxml");
+        super(user, PATHS.MARCHESINI_VIEWS + "cat" + category + "/Es" + exercise + ".fxml");
         this.category = category;
         this.exercise = exercise;
-        show();
+        load();
         setTitle();
         loadSave();
         loadNavigation();
-        start();
+        show();
     }
 
     //Getter
@@ -83,7 +84,7 @@ public class MarchesiniExerciseLoader extends MarchesiniLoader {
         //Controllo successivo
         if(!nextFile.exists()) { //Se non trova manda al completamento
             nextBtn.getStyleClass().remove("navigation");
-            nextBtn.getStyleClass().add("option");
+            nextBtn.getStyleClass().add("btn-blue");
             nextBtn.setText("Consegna");
             nextBtn.setOnAction(e -> { //getController().complete;
                 //TODO: Loader e meccanismo di completamento degli esercizi

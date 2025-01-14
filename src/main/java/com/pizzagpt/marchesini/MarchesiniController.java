@@ -1,10 +1,8 @@
 package com.pizzagpt.marchesini;
 
-import com.pizzagpt.Main;
 import com.pizzagpt.PATHS;
 import com.pizzagpt.Utils;
 import com.pizzagpt.*;
-import com.pizzagpt.userSession.SessionController;
 import com.pizzagpt.userSession.SessionLoader;
 import com.pizzagpt.userSession.User;
 import javafx.event.ActionEvent;
@@ -13,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,11 +18,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 // Classe controller per la gestione delle Scene di Marchesini
-public class Controller implements ControllerInterface, Initializable {
+public class MarchesiniController implements Initializable, ControllerInterface {
 
     // Variabile
     private int category, exercise;
-    private User user;
+    private User loggedUser;
 
     // Initialize
     @Override
@@ -35,7 +32,7 @@ public class Controller implements ControllerInterface, Initializable {
     // ControllerInterface
     @Override
     public void setUser(User user) {
-        this.user = user;
+        this.loggedUser = user;
     }
     @Override
     public void logOut() {
@@ -52,8 +49,6 @@ public class Controller implements ControllerInterface, Initializable {
         this.exercise = exercise;
     }
 
-    // Scri
-
     // Aggiorna le progress-bar se presenti
     //TODO: Caricare le progress bar degli esercizi
     public void loadProgress() {
@@ -62,25 +57,24 @@ public class Controller implements ControllerInterface, Initializable {
     // Porta all'esercizio selezionato
     public void toExercise(ActionEvent event) throws IOException {
         Button btn = (Button)event.getSource();
-        new MarchesiniExerciseLoader(user, Integer.parseInt(btn.getId().substring(3)), 1);
+        new MarchesiniExerciseLoader(loggedUser, Integer.parseInt(btn.getId().substring(3)), 1);
     }
     public void toMainMenu() throws IOException {
-        new SessionLoader(user, PATHS.MARCHESINI_MAIN);
+        new SessionLoader(loggedUser, PATHS.MARCHESINI_MAIN);
     }
     public void toSelection() throws IOException {
-        MarchesiniLoader selectionMarchesini = new MarchesiniLoader(user, "Selection.fxml");
-        selectionMarchesini.start();
+        Loader selectionMarchesini = new Loader(loggedUser, PATHS.MARCHESINI_VIEWS + "Selection.fxml");
+        selectionMarchesini.load();
         selectionMarchesini.show();
     }
 
     public void writeToFile(String[] tokens, String choice) {
         try {
-            PrintWriter write = new PrintWriter(PATHS.MARCHESINI_SAVES + "user" + user.getId() + "/" + tokens[0] + ".txt");
+            PrintWriter write = new PrintWriter(PATHS.MARCHESINI_SAVES + "user" + loggedUser.getId() + "/" + tokens[0] + ".txt");
             write.println(tokens[1] + "," + choice);
-            System.out.println("sono nel writetofile");
             write.close();
         } catch(FileNotFoundException ex) {
-            System.out.println("[Eccezione: " + ex + "] nel writeToFile");
+            System.out.println("[Eccezione: " + ex + "]");
         }
     }
 
@@ -90,9 +84,9 @@ public class Controller implements ControllerInterface, Initializable {
         Button btn = (Button)event.getSource(); //Determina qual è il tasto cliccato
         String id = btn.getId(); //Estrapola l'ID del button
         if(id.equals("previous")) {
-            new MarchesiniExerciseLoader(user, 1, exercise-1);
+            new MarchesiniExerciseLoader(loggedUser, 1, exercise-1);
         } else {
-            new MarchesiniExerciseLoader(user, 1, exercise+1);
+            new MarchesiniExerciseLoader(loggedUser, 1, exercise+1);
         }
     }
 

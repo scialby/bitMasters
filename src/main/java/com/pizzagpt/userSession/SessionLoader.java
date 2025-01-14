@@ -16,8 +16,8 @@ public class SessionLoader extends Loader {
         setCss(PATHS.CSS);
         controller = (SessionController)super.getController();
         controller.setUser(user);
+        load();
         show();
-        start();
     }
 
     // Getter

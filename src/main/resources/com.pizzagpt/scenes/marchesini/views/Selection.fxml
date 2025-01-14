@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="Es0_0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.Controller">
+<AnchorPane fx:id="Es0_0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.MarchesiniController">
    <children>
       <GridPane alignment="CENTER" layoutY="70.0" prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -68,13 +68,13 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Button" />
+                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Button" style="-fx-font-size: 14px;"/>
                                  </children></Pane>
                               <Pane prefHeight="35.0" prefWidth="110.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Button fx:id="cat1" mnemonicParsing="false" onAction="#toExercise" prefHeight="30.0" prefWidth="105.0" text="INIZIA">
+                                    <Button fx:id="cat1" mnemonicParsing="false" onAction="#toExercise" prefHeight="30.0" prefWidth="105.0" text="INIZIA" style="-fx-font-size: 14px; -fx-font-weight: bold">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial" size="14.0" />
                                        </font></Button>
                                  </children>
                                  <GridPane.margin>
@@ -147,7 +147,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Button" />
+                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Button" style="-fx-font-size: 14px;"/>
                                  </children>
                               </Pane>
                               <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -155,7 +155,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
                                  <children>
-                                    <Button fx:id="cat2" mnemonicParsing="false" onAction="#toExercise" prefHeight="30.0" prefWidth="105.0" text="INIZIA">
+                                    <Button fx:id="cat2" mnemonicParsing="false" onAction="#toExercise" prefHeight="30.0" prefWidth="105.0" text="INIZIA" style="-fx-font-size: 14px; -fx-font-weight: bold">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -175,11 +175,11 @@
       </GridPane>
       <HBox alignment="CENTER" layoutY="450.0" prefHeight="90.0" prefWidth="600.0" spacing="75.0" styleClass="footer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#toMainMenu" prefHeight="50.0" prefWidth="200.0" styleClass="exit" text="Torna al menù" textFill="RED">
+            <Button mnemonicParsing="false" onAction="#toMainMenu" prefHeight="50.0" prefWidth="200.0" styleClass="btn-red" text="Torna al menù" textFill="RED">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" styleClass="exit" text="Esci dall'account" textFill="RED">
+            <Button mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" styleClass="btn-red" text="Esci dall'account" textFill="RED">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>

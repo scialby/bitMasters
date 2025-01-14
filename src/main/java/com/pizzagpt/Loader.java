@@ -10,13 +10,13 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public abstract class Loader {
+public class Loader {
 
     //Variabili
     private String path;
     private User user;
     //Oggetti
-    private Object controller;
+    private ControllerInterface controller;
     private Pane loadedContent;
     private StackPane root, overlay;
     private ImageView imageView;
@@ -27,7 +27,8 @@ public abstract class Loader {
         this.path = path;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path)); //Imposta il percorso
         loadedContent = fxmlLoader.load(); //Carica il contenuto del percorso
-        controller = fxmlLoader.getController();
+        controller = fxmlLoader.getController(); //Imposta il controller, basta che abbia la stessa interfaccia
+        controller.setUser(user); //Passa l'utente al controller
         root = new StackPane(); //Crea il parente per contenuto e caricamento
         root.getChildren().add(loadedContent); //Gli aggiunge il contenuto
         overlay = new StackPane(); //Crea caricamento
@@ -44,9 +45,7 @@ public abstract class Loader {
     }
 
     // Getter
-    public String getPath() {
-        return path;
-    }
+    public String getPath() { return path; }
     public User getUser() {
         return user;
     }
@@ -61,13 +60,13 @@ public abstract class Loader {
     }
 
     // Funzioni
-    public void show() { //Mostra la scena
+    public void load() { //Carica la scena
         Main.stg.setScene(scene);
         Main.stg.show();
     }
-    public void start() { //Rimuove la schermata di caricamento
+    public void show() { //Rimuove la schermata di caricamento
         root.getChildren().remove(overlay);
-    }
+    } //Mostra in definitiva la scena (toglie il caricamento)
     public void setTitle(String title) { //Imposta il titolo
         Main.stg.setTitle(title);
     }
