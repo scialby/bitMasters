@@ -8,9 +8,9 @@
    <children>
       <VBox alignment="CENTER" layoutY="296.0" styleClass="inputbuttons">
          <children>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginHandler" prefHeight="51.0" prefWidth="85.0" styleClass="btn" text="ACCEDI">
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginHandler" prefHeight="51.0" prefWidth="85.0" styleClass="btn-login" text="ACCEDI">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Segoe UI" size="16.0" />
                </font>
                 </Button>
             <Hyperlink alignment="CENTER" onAction="#toRegister" prefHeight="26.0" prefWidth="300.0" text="Non hai un account? Registrati qui!">
@@ -36,7 +36,7 @@
                <children>
                   <TextField fx:id="usernameField" prefHeight="41.0" prefWidth="184.0" promptText="Username" styleClass="textfield">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Segoe UI" size="15.0" />
                      </font>
                   </TextField>
                   <PasswordField fx:id="passwordField" prefHeight="41.0" prefWidth="184.0" promptText="Password" styleClass="textfield">

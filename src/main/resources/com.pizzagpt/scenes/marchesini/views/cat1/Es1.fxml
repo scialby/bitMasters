@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -8,8 +9,8 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="cat1_1" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.Controller">
-   <ImageView fitHeight="170.0" fitWidth="506.0" layoutX="47.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="74.0">
+<AnchorPane fx:id="cat1_1" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.MarchesiniController">
+   <ImageView fitHeight="170.0" fitWidth="866.0" layoutX="47.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="74.0">
       <Image url="@../../images/es1_1.png" />
    </ImageView>
    <Label alignment="CENTER" layoutX="1.0" layoutY="387.0" prefHeight="41.0" prefWidth="1000.0" text="Il codice non funziona perché mancano dei caratteri. Quali sono?" textAlignment="CENTER" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -33,9 +34,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="mainMenu" alignment="CENTER" mnemonicParsing="false" onAction="#toSelection" prefHeight="49.0" prefWidth="198.0" styleClass="exit" text="Esci dall'esercizio" textFill="RED">
+      <Button fx:id="mainMenu" alignment="CENTER" mnemonicParsing="false" onAction="#toSelection" prefHeight="49.0" prefWidth="198.0" styleClass="btn-red" text="Esci dall'esercizio" textFill="RED" style="-fx-font-size: 21px; -fx-font-weight: bold">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -61,7 +62,7 @@
       </font>
    </Label>
    <HBox alignment="CENTER" layoutY="436.0" prefHeight="49.0" prefWidth="1000.0" style="-fx-spacing: 100;" AnchorPane.bottomAnchor="115.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-      <Button fx:id="wrong1" alignment="CENTER" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text=", e {" textFill="#0073ff">
+      <Button fx:id="wrong1" alignment="CENTER" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text=", e {" textFill="#0073ff" style="-fx-font-size: 18px; -fx-font-weight: bold">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -69,7 +70,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="correct" alignment="CENTER" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text="; e }" textFill="#0073ff">
+      <Button fx:id="correct" alignment="CENTER" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text="; e }" textFill="#0073ff" style="-fx-font-size: 18px; -fx-font-weight: bold">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -77,7 +78,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="wrong2" alignment="CENTER" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text=", e (" textFill="#0073ff">
+      <Button fx:id="wrong2" alignment="CENTER" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text=", e (" textFill="#0073ff" style="-fx-font-size: 18px; -fx-font-weight: bold">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -85,7 +86,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="wrong" alignment="CENTER" layoutX="314.0" layoutY="10.0" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text="; e )" textFill="#0073ff" HBox.hgrow="ALWAYS">
+      <Button fx:id="wrong" alignment="CENTER" layoutX="314.0" layoutY="10.0" mnemonicParsing="false" onAction="#choiceHandler" prefHeight="49.0" prefWidth="106.0" styleClass="option" text="; e )" textFill="#0073ff" HBox.hgrow="ALWAYS" style="-fx-font-size: 18px; -fx-font-weight: bold">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -94,12 +95,16 @@
          </cursor>
       </Button>
    </HBox>
-   <Button fx:id="mainMenu1" alignment="CENTER" layoutX="931.0" layoutY="10.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="55.0" styleClass="exit" text="X" textFill="RED" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+   <Button fx:id="mainMenu1" alignment="CENTER" layoutX="931.0" layoutY="10.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="55.0" text="X" textFill="RED" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <font>
          <Font name="Malgun Gothic Bold" size="25.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
+      <styleClass>
+         <String fx:value="btn-red" />
+         <String fx:value="btn-round" />
+      </styleClass>
    </Button>
 </AnchorPane>
