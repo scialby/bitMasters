@@ -79,14 +79,18 @@ public class Exercise {
      */
     private void loadExerciseContent() {
         try {
-            File imageFile = new File(getExElement(SortinoMain.exId, "img"));
-            exerciseUI.loadImage(imageFile);  // Carica l'immagine dell'esercizio
+            // Ottieni il nome dell'immagine (assumendo che getExElement restituisca il nome dell'immagine come stringa)
+            String imageName = getExElement(SortinoMain.exId, "img");
+
+            // Carica l'immagine usando il nome, non un oggetto File
+            exerciseUI.loadImage(imageName);  // Carica l'immagine dell'esercizio
             exerciseUI.setInstructions(getExElement(SortinoMain.exId, "instructions")); // Imposta le istruzioni
             exerciseUI.configureChoiceButtons(getChoicesText(SortinoMain.exId)); // Configura i pulsanti di scelta
-        } catch (IOException e) {
+        } catch (Exception e) {
             debug("Errore nel caricamento del contenuto dell'esercizio: " + e.getMessage());
         }
     }
+
 
     /**
      * Gestisce la navigazione alla fine del livello

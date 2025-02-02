@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -78,19 +79,32 @@ public class ExerciseUI {
     /**
      * Carica e visualizza l'immagine dell'esercizio.
      */
-    public void loadImage(File imageFile) {
+    public void loadImage(String imageName) {
         try {
-            Image image = new Image(imageFile.toURI().toString());
+            // Carica l'immagine dal classpath, senza usare un percorso assoluto
+            InputStream imageStream = getClass().getResourceAsStream("/com.bitmasters/images/sortino/" + imageName);
+            System.out.println("Tentativo di caricare l'immagine da: /com/bitmasters/images/sortino/" + imageName);
+
+            if (imageStream == null) {
+                throw new IOException("Immagine non trovata: " + imageName);
+            }
+
+            // Crea l'immagine dal flusso di input
+            Image image = new Image(imageStream);
             double maxWidth = Main.stg.getWidth() - 40;
 
             exerciseImage.setImage(image);
             exerciseImage.setPreserveRatio(true);
             exerciseImage.setFitWidth(maxWidth);
             exerciseImage.setFitHeight(image.getHeight() * (maxWidth / image.getWidth()));
-        } catch (Exception e) {
-            handleImageError(e);  // Gestisce eventuali errori di caricamento dell'immagine
+        } catch (IOException e) {
+            debug("Errore di caricamento immagine: " + e.getMessage());
+            handleImageError(e);  // Gestisci gli errori di caricamento
         }
     }
+
+
+
 
     /**
      * Gestisce gli errori di caricamento immagine, mostrando un'immagine di fallback.

@@ -16,182 +16,141 @@ import java.util.Map;
 
 import static com.bitmasters.LoggerManager.debug;
 
-/**
- * Classe per la gestione del salvataggio e del caricamento dei progressi degli utenti.
- * I progressi di tutti gli utenti vengono salvati in un unico file JSON (Users.json).
- */
 public class ProgressManager {
 
-    // Percorso del file in cui vengono salvati i progressi di tutti gli utenti.
     private static final String USERS_PROGRESS_FILE = "Users.json";
     private List<ProgressBar> progressBars;
 
-    // Mapper per la conversione JSON
     private static final ObjectMapper mapper = new ObjectMapper();
 
-
-    /**
-     * Costruttore che accetta 3 HBox e crea una ProgressBar per ciascuno.
-     * Aggiorna tutte le progress bar con il valore corrente di SortinoMain.exId.
-     *
-     */
     public ProgressManager(HBox progressBar1, HBox progressBar2, HBox progressBar3) {
         progressBars = new ArrayList<>();
 
-        // Aggiunge una nuova ProgressBar per ciascun HBox
         progressBars.add(new ProgressBar(progressBar1));
         progressBars.add(new ProgressBar(progressBar2));
         progressBars.add(new ProgressBar(progressBar3));
 
-        // Inizializza le progress bar in base al livello corrente dell'utente
         updateProgressBars();
     }
 
-    /**
-     * Restituisce la lista di tutte le ProgressBar gestite.
-     *
-     */
     public List<ProgressBar> getProgressBars() {
         return progressBars;
     }
 
-    /**
-     * Metodo per aggiornare tutte le progress bar con un nuovo esercizio.
-     * La funzione aggiorna ciascuna barra di progresso chiamando il metodo updateProgressBar.
-     *
-     */
     public void updateAllProgressBars(String exId) {
         for (ProgressBar pb : progressBars) {
-            pb.updateProgressBar(Integer.parseInt(exId)); // Aggiorna la barra di progresso con l'ID dell'esercizio
+            pb.updateProgressBar(Integer.parseInt(exId));
         }
     }
 
-    /**
-     * Aggiorna tutte le progress bar in base al livello corrente dell'utente.
-     * logica:
-     * - Il totale dei quadrati da riempire è dato dal currentLevel (massimo 9).
-     * - La prima progress bar (barra1) riempie fino a 3 quadrati.
-     * - La seconda progress bar riempie i quadrati da 4 a 6.
-     * - La terza progress bar riempie i quadrati da 7 a 9.
-     */
     public void updateProgressBars() {
         int level = Main.getCurrentUser().getProgress().getCurrentLevel();
         if (level > 9) {
-            level = 9;  // Limitiamo il massimo a 9 quadrati
+            level = 9;
         }
 
-        // Determina quanti quadrati riempire in ciascuna barra
         int fill1 = Math.min(3, level);
         int fill2 = Math.min(3, Math.max(level - 3, 0));
         int fill3 = Math.min(3, Math.max(level - 6, 0));
 
-        // Aggiorna ciascuna progress bar
         progressBars.get(0).updateProgressBar(fill1);
         progressBars.get(1).updateProgressBar(fill2);
         progressBars.get(2).updateProgressBar(fill3);
     }
 
-    /**
-     * Salva il progresso di un utente aggiornando il file Users.json.
-     * Verifica se il progresso è valido prima di tentare di salvare.
-     */
     public void saveProgress() {
+        debug("Avvio del metodo saveProgress()");
+
         UserProgress progress = Main.getCurrentUser().getProgress();
-        if (progress == null || Main.getCurrentUser().getUsername() == null || Main.getCurrentUser().getUsername().isEmpty()) {
+        debug("Progress ottenuto: " + progress);
+
+        String username = Main.getCurrentUser().getUsername();
+        debug("Username ottenuto: " + username);
+
+        if (progress == null || username == null || username.isEmpty()) {
             System.err.println("Progresso non valido, impossibile salvare.");
+            debug("Progresso o username non valido. Uscita dal metodo saveProgress().");
             return;
         }
 
-        // Carica l'attuale mappa dei progressi
+        // Carica i progressi esistenti
+        debug("Caricamento dei progressi esistenti...");
         Map<String, UserProgress> progressMap = loadAllProgress();
+        debug("Progressi esistenti caricati: " + progressMap);
 
-        // Aggiorna (o aggiunge) il progresso per lo specifico utente
-        progressMap.put(Main.getCurrentUser().getUsername(), progress);
+        // Aggiorna o aggiungi il progresso per l'utente corrente
+        progressMap.put(username, progress);
+        debug("Progresso aggiornato per l'utente: " + username);
 
-        // Salva l'intera mappa nel file
-        File file = new File(USERS_PROGRESS_FILE);
+        // Salva il file in una directory esterna (ad esempio nella directory di lavoro dell'app)
+        File externalFile = new File(System.getProperty("user.dir"), USERS_PROGRESS_FILE);
+        debug("Percorso del file di salvataggio: " + externalFile.getAbsolutePath());
+
         try {
-            // Scrive i progressi nel file JSON
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, progressMap);
-            System.out.println("Progresso salvato per l'utente: " + Main.getCurrentUser().getUsername());
-            System.out.println("Percorso file: " + file.getAbsolutePath());
+            debug("Inizio scrittura del file...");
+            mapper.writerWithDefaultPrettyPrinter().writeValue(externalFile, progressMap);
+            System.out.println("Progresso salvato per l'utente: " + username);
+            debug("Progresso salvato correttamente per l'utente: " + username);
         } catch (IOException e) {
             System.err.println("Errore nel salvataggio dei progressi: " + e.getMessage());
+            debug("Errore nel salvataggio dei progressi: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    /**
-     * Carica il progresso di un utente specifico leggendo il file Users.json.
-     * Se l'utente non ha un progresso salvato, ne crea uno nuovo.
-     *
-     */
     public static UserProgress loadProgress(String username) {
+        debug("Avvio del metodo loadProgress() con username: " + username);
+
         if (username == null || username.isEmpty()) {
             System.err.println("Username non valido per il caricamento dei progressi.");
+            debug("Username non valido. Uscita dal metodo loadProgress().");
             return null;
         }
 
-        // Carica l'intera mappa dei progressi
         Map<String, UserProgress> progressMap = loadAllProgress();
+        debug("Progressi caricati: " + progressMap);
 
         if (progressMap.containsKey(username)) {
-            // Se l'utente ha progressi salvati, restituisce il relativo progresso
             System.out.println("Progresso caricato per l'utente: " + username);
+            debug("Progresso trovato per l'utente: " + username);
             return progressMap.get(username);
         } else {
-            // Se l'utente non ha progressi salvati, ne crea uno nuovo
             System.out.println("Nessun progresso trovato per " + username + ". Viene creato un nuovo progresso.");
+            debug("Nessun progresso trovato. Creazione di un nuovo progresso per l'utente: " + username);
             return new UserProgress(username);
         }
     }
 
-    /**
-     * Metodo  per caricare l'intera mappa dei progressi da Users.json.
-     * Restituisce una mappa con gli username come chiave e i progressi come valore.
-     *
-     * @return Una mappa con username come chiave e UserProgress come valore.
-     */
     private static Map<String, UserProgress> loadAllProgress() {
+        debug("Avvio del metodo loadAllProgress()");
         Map<String, UserProgress> progressMap = new HashMap<>();
-        // Proviamo a caricare la risorsa dal classpath
-        InputStream is = ProgressManager.class.getClassLoader().getResourceAsStream(USERS_PROGRESS_FILE);
-        if (is != null) {
-            try {
+
+        File externalFile = new File(System.getProperty("user.dir"), USERS_PROGRESS_FILE);
+        try (InputStream is = externalFile.exists() ? externalFile.toURI().toURL().openStream() : null) {
+            if (is != null) {
+                debug("Risorsa " + USERS_PROGRESS_FILE + " trovata. Lettura del contenuto...");
                 String content = new String(is.readAllBytes(), StandardCharsets.UTF_8);
-                if (content.trim().isEmpty()) {
-                    System.out.println("La risorsa " + USERS_PROGRESS_FILE + " è vuota, verrà usata una mappa vuota.");
-                    progressMap = new HashMap<>();
-                } else {
+                debug("Contenuto del file letto: " + content);
+
+                if (!content.trim().isEmpty()) {
                     progressMap = mapper.readValue(content, new TypeReference<Map<String, UserProgress>>() {});
                     System.out.println("Progressi caricati dalla risorsa: " + USERS_PROGRESS_FILE);
-                }
-            } catch (IOException e) {
-                System.err.println("Errore nel caricamento dei progressi dalla risorsa: " + e.getMessage());
-                e.printStackTrace();
-            } finally {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    // eventuale log dell'errore di chiusura
-                }
-            }
-        } else {
-            // Se la risorsa non esiste (ad esempio, durante il salvataggio il file potrebbe essere creato nel file system)
-            File file = new File(USERS_PROGRESS_FILE);
-            if (file.exists()) {
-                try {
-                    progressMap = mapper.readValue(file, new TypeReference<Map<String, UserProgress>>() {});
-                    System.out.println("Progressi caricati da: " + file.getAbsolutePath());
-                } catch (IOException e) {
-                    System.err.println("Errore nel caricamento dei progressi: " + e.getMessage());
-                    e.printStackTrace();
+                    debug("Progressi caricati correttamente da " + USERS_PROGRESS_FILE);
+                } else {
+                    System.out.println("La risorsa " + USERS_PROGRESS_FILE + " è vuota, verrà usata una mappa vuota.");
+                    debug("La risorsa " + USERS_PROGRESS_FILE + " è vuota.");
                 }
             } else {
-                debug("Il file " + USERS_PROGRESS_FILE + " non esiste ancora. Verrà creato al salvataggio.");
+                System.out.println("La risorsa " + USERS_PROGRESS_FILE + " non esiste ancora. Verrà creata al salvataggio.");
+                debug("La risorsa " + USERS_PROGRESS_FILE + " non trovata.");
             }
+        } catch (IOException e) {
+            System.err.println("Errore nel caricamento dei progressi: " + e.getMessage());
+            debug("Errore nel caricamento dei progressi: " + e.getMessage());
+            e.printStackTrace();
         }
+
+        debug("Ritorno della mappa dei progressi: " + progressMap);
         return progressMap;
     }
-
 }

@@ -1,10 +1,6 @@
 {
-  "root" : {
-    "attempts" : 8,
-    "currentLevel" : 3
-  },
-  "user" : {
-    "attempts" : 7,
-    "currentLevel" : 1
+  "hh" : {
+    "attempts" : 0,
+    "currentLevel" :4
   }
 }

@@ -34,7 +34,6 @@ public class Main extends Application {
     public static User getCurrentUser() {
         return currentUser;
     }
-
     // Setters
     public static void setUserPoints(int userPoints) {
         Main.playerScore = userPoints;
