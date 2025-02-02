@@ -15,7 +15,11 @@
     -gray: rgb(100, 100, 100);
     -dark-gray: rgb(30, 30, 30);
 }
-
+.root {
+    -fx-background-color: #000000;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
 /* --------------------------------------------------------------------------*/
 
 /* GENERALI */

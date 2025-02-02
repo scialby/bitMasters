@@ -19,6 +19,7 @@ import java.util.Set;
 
 import static com.pizzagpt.LoggerManager.debug;
 import static com.pizzagpt.Utils.setScene;
+import static com.pizzagpt.Utils.setSceneDynamic;
 import static com.pizzagpt.sortino.Tutorial.setTutorial;
 
 public class SortinoMain {
@@ -176,25 +177,13 @@ public class SortinoMain {
     // Torna al menù principale caricando la scena corrispondente
     public void toMainMenu() {
         try {
-            Loader loader = new Loader(loggedUser, PATHS.MAIN_MENU);
-            loader.setTitle("Menù principale");
-            loader.load();
-            loader.show();
+
+            setSceneDynamic(PATHS.LOGIN_SCENE);
             getProgressManager().saveProgress();
-            setScene(PATHS.LOGIN_SCENE);
         } catch (IOException e) {
             throw new RuntimeException("Impossibile caricare il menu principale: " + e.getMessage());
         }
     }
 
-    // Esegue il logout e torna alla scena di login
-    public void logOut() {
-        try {
-            setScene(PATHS.LOGIN_SCENE);
-            getProgressManager().saveProgress();
 
-        } catch (IOException ex) {
-            debug("Errore durante il logout: " + ex.getMessage());
-        }
-    }
 }

@@ -67,7 +67,7 @@
    <!-- Contenuto principale: 3 livelli -->
    <VBox alignment="CENTER" spacing="30" style="-fx-padding: 0 50;">
       <!-- Livello Principiante -->
-      <VBox prefHeight="80.0" prefWidth="200.0" styleClass="level-card" alignment="CENTER" spacing="10">
+      <VBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" spacing="10" styleClass="level-card">
          <Label style="-fx-text-fill: #2c3e50; -fx-font-size: 24px; -fx-font-weight: bold;" text="Principiante 🌱" />
          <Button id="beginnerBtn" fx:id="ex1_1" styleClass="level-button" text="Inizia la sfida ➔" />
          <!-- Barra di progresso per Principiante -->
@@ -76,7 +76,7 @@
       </VBox>
 
       <!-- Livello Intermedio -->
-      <VBox styleClass="level-card" alignment="CENTER" spacing="10">
+      <VBox alignment="CENTER" spacing="10" styleClass="level-card">
          <Label style="-fx-text-fill: #2c3e50; -fx-font-size: 24px; -fx-font-weight: bold;" text="Intermedio 🚀" />
          <Button id="intermediateBtn" fx:id="ex2_1" styleClass="level-button" text="Inizia la sfida ➔" />
          <!-- Barra di progresso per Intermedio -->
@@ -85,7 +85,7 @@
       </VBox>
 
       <!-- Livello Avanzato -->
-      <VBox styleClass="level-card" alignment="CENTER" spacing="10">
+      <VBox alignment="CENTER" spacing="10" styleClass="level-card">
          <Label style="-fx-text-fill: #2c3e50; -fx-font-size: 24px; -fx-font-weight: bold;" text="Avanzato 🔥" />
          <Button id="advancedBtn" fx:id="ex3_1" styleClass="level-button" text="Inizia la sfida ➔" />
          <!-- Barra di progresso per Avanzato -->
@@ -98,11 +98,6 @@
    <HBox alignment="CENTER" prefHeight="270.0" prefWidth="800.0" spacing="75.0" styleClass="footer">
       <children>
          <Button mnemonicParsing="false" onAction="#toMainMenu" prefHeight="50.0" prefWidth="200.0" styleClass="btn-red" text="Torna al menù" textFill="RED">
-            <font>
-               <Font name="System Bold" size="20.0" />
-            </font>
-         </Button>
-         <Button mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" styleClass="btn-red" text="Esci dall'account" textFill="RED">
             <font>
                <Font name="System Bold" size="20.0" />
             </font>

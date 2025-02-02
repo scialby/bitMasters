@@ -37,6 +37,19 @@ public class Utils {
         Main.stg.show();
 
     }
+    public static void setSceneDynamic(String path) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
+        Parent loadedContent = fxmlLoader.load();
+        Scene scene = new Scene(loadedContent);
+
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm());
+        Main.stg.setMinWidth(0);
+        Main.stg.setMinHeight(0);
+        Main.stg.setScene(scene);
+        Main.stg.sizeToScene();
+        Main.stg.centerOnScreen();
+        Main.stg.show();
+    }
 
     /* Prende il nome del file fxml in cui ci si trova*/
     public static String getSceneName() {
