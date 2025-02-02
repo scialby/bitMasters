@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.pizzagpt.LoggerManager.debug;
+import static com.pizzagpt.Utils.setScene;
 import static com.pizzagpt.sortino.Tutorial.setTutorial;
 
 public class SortinoMain {
@@ -166,7 +167,7 @@ public class SortinoMain {
         progressManager.updateProgressBars();
 
         try {
-            Main.util.setScene(PATHS.SORTINO_MAIN);
+            setScene(PATHS.SORTINO_MAIN);
         } catch (IOException e) {
             debug("Errore nel refresh della scena: " + e.getMessage());
         }
@@ -180,6 +181,7 @@ public class SortinoMain {
             loader.load();
             loader.show();
             getProgressManager().saveProgress();
+            setScene(PATHS.LOGIN_SCENE);
         } catch (IOException e) {
             throw new RuntimeException("Impossibile caricare il menu principale: " + e.getMessage());
         }
@@ -188,7 +190,7 @@ public class SortinoMain {
     // Esegue il logout e torna alla scena di login
     public void logOut() {
         try {
-            Utils.setScene(PATHS.LOGIN_SCENE);
+            setScene(PATHS.LOGIN_SCENE);
             getProgressManager().saveProgress();
 
         } catch (IOException ex) {

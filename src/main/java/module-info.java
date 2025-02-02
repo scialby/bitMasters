@@ -4,6 +4,7 @@ module com.pizzagpt {
     requires java.desktop;
     requires java.logging;
     requires com.fasterxml.jackson.databind;
+    requires javafx.graphics;
 
     exports com.pizzagpt.sortino to javafx.fxml;
 

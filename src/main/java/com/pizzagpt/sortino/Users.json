@@ -1,6 +1,10 @@
 {
   "hh" : {
-    "attempts" : 8,
+    "attempts" : 26,
+    "currentLevel" : 6
+  },
+  "root" : {
+    "attempts" : 25,
     "currentLevel" : 2
   }
 }

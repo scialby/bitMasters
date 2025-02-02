@@ -88,25 +88,33 @@ public class Exercise {
     /**
      * Gestisce la navigazione alla fine del livello
      */
-    private void handleFinalLevel(boolean isPassed){
+    private void handleFinalLevel(boolean isPassed) {
         debug("Gestione fine livello");
-        if(isPassed){
+        if (isPassed) {
             debug("Risposta corretta!");
             correctAnswerCount++;
-        }
-        else{
+        } else {
             debug("Risposta sbagliata!");
             hasFailed = true; // registra il livello come fallito
             wrongAnswersCount++;
         }
         Main.getCurrentUser().getProgress().addAttempt(SortinoMain.exId);//necessario per allExerciseCompleted()
-        debug("Tutti gli esercizi completati? " +allExercisesCompleted());
+        debug("Tutti gli esercizi completati? " + allExercisesCompleted());
         debug("Current User: " + Main.getCurrentUser());
         // Verifica se tutti gli esercizi sono stati completati
-        if (allExercisesCompleted() && Main.getCurrentUser() != null ) {
+        if (allExercisesCompleted() && Main.getCurrentUser() != null) {
             debug("Livello completato!");
             try {
-                setScene(PATHS.WRONGVIEW); // Mostra la schermata di errore
+                if(hasFailed) {
+                    debug("Passaggio alla schermata di errore...");
+                    setScene(PATHS.WRONGVIEW); // Mostra la schermata di errore
+                }
+                else{
+                    debug("Calcolo e impostazione dei punti...");
+                    calculateAndSetPoints();
+                    debug("Passaggio alla schermata di risposta corretta...");
+                    setScene(PATHS.CORRECTVIEW);
+                }
             } catch (IOException e) {
                 debug("Errore nel passaggio alla schermata di errore: " + e.getMessage());
             }
@@ -119,6 +127,7 @@ public class Exercise {
                 debug("Errore durante il passaggio al prossimo esercizio: " + e.getMessage());
             }
         }
+
     }
     /**
      * Gestisce la selezione di una risposta. Controlla se la risposta è corretta o sbagliata e avvia la navigazione.

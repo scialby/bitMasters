@@ -21,8 +21,6 @@ public class CorrectAnswer {
     @FXML
     private Button toMenuBtn; // Pulsante per tornare al menu principale
 
-
-
     /**
      * Gestisce il passaggio al prossimo esercizio.
      * Questo metodo viene invocato quando l'utente clicca sul pulsante "Nuovo Esercizio".
