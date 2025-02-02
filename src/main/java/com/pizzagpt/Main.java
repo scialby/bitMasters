@@ -60,10 +60,12 @@ public class Main extends Application {
 
         // Aggiungi listener per la chiusura
         stg.setOnCloseRequest(event -> {
-            debug("chiusura finestra, currentUser: "+currentUser);
+            debug("chiusura finestra, currentUser: " + currentUser);
             if (currentUser != null) {
                 debug("Salvataggio progressi..."+ currentUser);
-                SortinoMain.getProgressManager().saveProgress();
+                if(SortinoMain.getProgressManager() != null) {
+                    SortinoMain.getProgressManager().saveProgress();
+                }
             }
         });
     }

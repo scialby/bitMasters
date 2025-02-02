@@ -12,19 +12,19 @@
       "choice" : "choice4"
     } ]
   }, {
-    "id" : 3,
-    "exercises" : [ ]
-  }, {
     "id" : 1,
     "exercises" : [ {
       "id" : 1,
-      "choice" : "choice3"
+      "choice" : "choice2"
     }, {
       "id" : 2,
-      "choice" : "choice1"
+      "choice" : "choice3"
     }, {
       "id" : 3,
       "choice" : "choice4"
     } ]
+  }, {
+    "id" : 3,
+    "exercises" : [ ]
   } ]
 }
