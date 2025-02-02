@@ -7,6 +7,7 @@ import java.util.List;
 
 public class MarchesiniUser {
 
+    // Struttura dell'esercizio salvato
     public static class Exercise {
         @JsonProperty("id")
         private int id;
@@ -24,6 +25,7 @@ public class MarchesiniUser {
         public void setParent(Category parent) { this.parent = parent; }
     }
 
+    // Struttura della categoria salvata
     public static class Category {
         @JsonProperty("id")
         private int id;
@@ -41,6 +43,7 @@ public class MarchesiniUser {
         public void setParent(Root parent) { this.parent = parent; }
     }
 
+    // Struttura della Root dell'utente
     public static class Root implements JsonInterface {
         @JsonProperty("categories")
         private List<Category> categories;

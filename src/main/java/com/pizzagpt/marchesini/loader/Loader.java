@@ -15,10 +15,10 @@ import java.io.IOException;
 
 public class Loader {
 
-    //Variabili
+    // VARIABILI
     private String path;
     private User user;
-    //Oggetti
+    // OGGETTI
     private ControllerInterface controller;
     private Pane loadedContent;
     private StackPane root, overlay;
@@ -67,6 +67,7 @@ public class Loader {
         root.getChildren().remove(overlay);
     }
 
+    // Imposta il titolo della window
     public void setTitle(String title) { //Imposta il titolo
         Main.stg.setTitle(title);
     }

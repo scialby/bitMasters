@@ -29,11 +29,13 @@ public class JsonHandler {
         return json_data;
     }
 
+    // Crea il file json dell'user
     private static File setUserFile(int user_id) {
         File user_json = new File(PATHS.MARCHESINI_SAVES + "user" + user_id + ".json");
         return user_json;
     }
 
+    // Controlla se il json dell'user loggato esiste
     public static boolean existsUser(int user_id) {
         File user_json = new File(PATHS.MARCHESINI_SAVES + "user" + user_id + ".json");
         if(user_json.exists()) {
@@ -42,6 +44,7 @@ public class JsonHandler {
         return false;
     }
 
+    // Calcola le categorie totali esistenti
     public static int totalCategories() {
         int tot_categories = 0;
         for(MarchesiniInfo.Category cat : root.getCategories()) {
@@ -50,6 +53,7 @@ public class JsonHandler {
         return tot_categories;
     }
 
+    // Resetta il json dell'user
     public static void cleanUserJson(int user_id, int category) {
         File user_json = setUserFile(user_id);
         MarchesiniUser.Root user_root;
@@ -84,6 +88,7 @@ public class JsonHandler {
         }
     }
 
+    // Salva le scelte relative all'esercizio nel file json dell'utente
     public static void saveExercise(int user_id, int category, int exercise, String choice) {
         File user_json = setUserFile(user_id);
         MarchesiniUser.Root user_root = getJsonRoot(user_json.getPath(), MarchesiniUser.Root.class);

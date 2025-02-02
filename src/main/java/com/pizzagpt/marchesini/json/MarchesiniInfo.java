@@ -6,6 +6,7 @@ import java.util.*;
 
 public class MarchesiniInfo {
 
+    // Struttura delle scelte possibili
     public static class Choice {
         @JsonProperty("id")
         private String id;
@@ -19,6 +20,7 @@ public class MarchesiniInfo {
         public boolean isCorrect() { return correct; }
     }
 
+    // Struttura degli esercizi possibili
     public static class Exercise {
         @JsonProperty("id")
         private int id;
@@ -35,6 +37,7 @@ public class MarchesiniInfo {
         public List<Choice> getChoices() { return choices; }
     }
 
+    // Struttura delle categorie possibili
     public static class Category {
         @JsonProperty("id")
         private int id;
@@ -51,6 +54,7 @@ public class MarchesiniInfo {
         public List<Exercise> getExercises() { return exercises; }
     }
 
+    // Struttura della root degli esercizi
     public static class Root implements JsonInterface {
         @JsonProperty("categories")
         private List<Category> categories;
