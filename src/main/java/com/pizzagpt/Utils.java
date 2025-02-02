@@ -37,6 +37,27 @@ public class Utils {
         Main.stg.show();
 
     }
+
+    public static void setSceneDynamic(Scene scene) throws IOException {
+
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm());
+        Main.stg.setMinWidth(0);
+        Main.stg.setMinHeight(0);
+        Main.stg.setScene(scene);
+        Main.stg.sizeToScene();
+        Main.stg.centerOnScreen();
+        Main.stg.show();
+    }
+    public static void setSceneDynamic(Scene scene, int minWidth, int minHeight) throws IOException {
+
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm());
+        Main.stg.setMinWidth(minWidth);
+        Main.stg.setMinHeight(minHeight);
+        Main.stg.setScene(scene);
+        Main.stg.sizeToScene();
+        Main.stg.centerOnScreen();
+        Main.stg.show();
+    }
     public static void setSceneDynamic(String path) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
         Parent loadedContent = fxmlLoader.load();
@@ -59,6 +80,32 @@ public class Utils {
             return "Root, Scene, or Stage is not set.";
         }
     }
+    public static void setScene(Scene scene) throws IOException {
+        int windowWidth = Main.defaultWindowWidth;
+        int windowHeight = Main.defaultWindowHeight;
+
+
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        double centerX = (screenBounds.getWidth() - windowWidth) / 2;
+        double centerY = (screenBounds.getHeight() - windowHeight) / 2;
+
+        Main.stg.setX(centerX);
+        Main.stg.setY(centerY);
+        Main.stg.setWidth(windowWidth);
+        Main.stg.setHeight(windowHeight);
+        Main.stg.setMinWidth(windowWidth);
+        Main.stg.setMinHeight(windowHeight);
+        Main.stg.setMaxWidth(windowWidth);
+        Main.stg.setMaxHeight(windowHeight);
+        Main.stg.setResizable(false);
+
+        Main.stg.setScene(scene);
+        Main.stg.show();
+        debug("Settaggio scena completato, id esercizio: "+ SortinoMain.exId);
+
+    }
+
     public static void setScene(String path) throws IOException {
         int windowWidth = Main.defaultWindowWidth;
         int windowHeight = Main.defaultWindowHeight;
@@ -93,6 +140,13 @@ public class Utils {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
         Pane loadedContent = fxmlLoader.load();
         Scene scene = new Scene(loadedContent);
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm());
+        Main.stg.setScene(scene);
+        Main.stg.setTitle("");
+        Main.stg.show();
+    }
+    public static void setSceneCSS(Scene scene) throws IOException {
+
         scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm());
         Main.stg.setScene(scene);
         Main.stg.setTitle("");

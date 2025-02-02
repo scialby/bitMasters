@@ -1,5 +1,8 @@
 {
   "categories" : [ {
+    "id" : 2,
+    "exercises" : [ ]
+  }, {
     "id" : 1,
     "exercises" : [ ]
   } ]
