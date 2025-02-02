@@ -1,2 +1,0 @@
-root,root,1
-prova,prova,2

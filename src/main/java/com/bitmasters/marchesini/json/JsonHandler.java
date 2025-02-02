@@ -13,13 +13,26 @@ import java.util.ArrayList;
 public class JsonHandler {
 
     private static ObjectMapper mapper = new ObjectMapper();
-    private static MarchesiniInfo.Root root = getJsonRoot(PATHS.MARCHESINI_JSON, MarchesiniInfo.Root.class);
+    private static MarchesiniInfo.Root root = getJsonRoot(MarchesiniInfo.Root.class);
 
     //Leggo il file.json, dato il suo path e la classe a cui appartiene
+    public static <T extends JsonInterface> T getJsonRoot(Class<T> json_class) {
+        T json_data = null;
+        try {
+            json_data = mapper.readValue(Main.class.getClassLoader().getResourceAsStream(PATHS.MARCHESINI_JSON), json_class);
+        } catch (StreamReadException e) {
+            System.out.println("[" + e.getMessage() + "] Dati corrotti oppure formato inatteso.");
+        } catch (DatabindException e) {
+            System.out.println("[" + e.getMessage() + "] Problema nella conversione dal file JSON.");
+        } catch (IOException e) {
+            System.out.println("[" + e.getMessage() + "] Accesso al file non riuscito.");
+        }
+        return json_data;
+    }
     public static <T extends JsonInterface> T getJsonRoot(String json_path, Class<T> json_class) {
         T json_data = null;
         try {
-            json_data = mapper.readValue(Main.class.getClassLoader().getResourceAsStream(json_path), json_class);
+            json_data = mapper.readValue(new File(json_path), json_class);
         } catch (StreamReadException e) {
             System.out.println("[" + e.getMessage() + "] Dati corrotti oppure formato inatteso.");
         } catch (DatabindException e) {
@@ -57,6 +70,7 @@ public class JsonHandler {
     // Resetta il json dell'user
     public static void cleanUserJson(int user_id, int category) {
         File user_json = setUserFile(user_id);
+        System.out.println("---------------" + user_json.getPath());
         MarchesiniUser.Root user_root;
         MarchesiniUser.Category user_category = null;
 

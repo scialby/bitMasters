@@ -40,7 +40,6 @@ public class ExerciseController extends MarchesiniController implements Initiali
     // Carica esercizio da .json
     public void loadExercise() {
         if(canLoadFromJson()) {
-            System.out.println();
             MarchesiniInfo.Exercise exercise = getExercise_info();
             MarchesiniInfo.Category category = getCategory_info();
             int num_category = category.getId();

@@ -1,6 +1,8 @@
 package com.bitmasters;
 
+import java.io.File;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 // PATHS
@@ -28,16 +30,19 @@ public final class PATHS {
     public final static String MARCHESINI_DESCRIPTION = MARCHESINI_VIEWS + "Description.fxml"; // Percorso per la schermata di descrizione della categoria
     public final static String MARCHESINI_RESULTS = MARCHESINI_VIEWS + "Results.fxml"; // Percorso per la schermata dei risultati di Marchesini
     public final static String MARCHESINI_JSON = "com.bitmasters/scenes/marchesini/Exercises.json"; // Percorso per il .json di tutti gli esercizi
-    public final static String USER_PATH;
-        // Prende il path del .jar dinamicamente
-        static {
-            try {
-                USER_PATH = String.valueOf(Paths.get(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).toAbsolutePath().getParent());
-            } catch (URISyntaxException e) {
-                throw new RuntimeException(e);
-            }
+    public final static String MARCHESINI_SAVES;
+    public static final String MARCHESINI_JAR;
+
+    static {
+        try {
+            File jar_path = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            MARCHESINI_JAR = String.valueOf(jar_path.getParentFile());
+            MARCHESINI_SAVES = MARCHESINI_JAR + "/saves/";
+            System.out.println(MARCHESINI_SAVES);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
-    public final static String MARCHESINI_SAVES = USER_PATH + "/saves/"; // Percorso per i file di salvataggio
+    }
 
     // SORTINO
     public final static String SORTINO = SCENES_PATH + "sortino/"; // Percorso base per la scena "Sortino"

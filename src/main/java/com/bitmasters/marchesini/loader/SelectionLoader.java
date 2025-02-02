@@ -13,7 +13,7 @@ public class SelectionLoader extends MarchesiniLoader<SelectionController> {
 
     public SelectionLoader(User user) throws IOException {
         super(user, PATHS.MARCHESINI_SELECTION, 0, 0);
-        File newFolder = new File(PATHS.USER_PATH, "saves");
+        File newFolder = new File(PATHS.MARCHESINI_JAR, "saves");
         if (!newFolder.exists()) {
             newFolder.mkdir();
         }

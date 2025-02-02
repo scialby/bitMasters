@@ -1,2 +1,1 @@
-hh,hh,1
-root,root,2
+admin,admin,1

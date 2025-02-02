@@ -51,7 +51,7 @@ public abstract class MarchesiniController implements ControllerInterface {
 
     //Controlla se può caricare da file .json
     public boolean canLoadFromJson() {
-        MarchesiniInfo.Root root = JsonHandler.getJsonRoot(PATHS.MARCHESINI_JSON, MarchesiniInfo.Root.class);
+        MarchesiniInfo.Root root = JsonHandler.getJsonRoot(MarchesiniInfo.Root.class);
         // Cicla ogni categoria presente fino a quando non corrisponde con quella cercata
         for(MarchesiniInfo.Category category : root.getCategories()) {
             if(category.getId() == getCategory()) {
