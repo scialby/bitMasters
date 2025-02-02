@@ -5,5 +5,8 @@
       "id" : 1,
       "choice" : "choice2"
     } ]
+  }, {
+    "id" : 2,
+    "exercises" : [ ]
   } ]
 }

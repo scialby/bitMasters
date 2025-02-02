@@ -19,7 +19,7 @@ public final class PATHS {
     public final static String LOGIN_SCENE = USER_SESSION + "LoginScene.fxml"; // Percorso del file FXML per il login
     public final static String REGISTER_SCENE = USER_SESSION + "RegisterScene.fxml"; // Percorso del file FXML per la registrazione
     public final static String MAIN_MENU = USER_SESSION + "MainView.fxml"; // Percorso per il menù principale
-    public final static String IMAGES = RESOURCES + "/com.bitmasters/images/";
+    public final static String IMAGES = "/com.bitmasters/images/";
 
     // MARCHESINI
     public final static String MARCHESINI = SCENES_PATH + "marchesini/"; // Percorso base per la scena "Marchesini"

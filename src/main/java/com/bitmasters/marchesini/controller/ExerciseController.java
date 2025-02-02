@@ -1,5 +1,6 @@
 package com.bitmasters.marchesini.controller;
 
+import com.bitmasters.Main;
 import com.bitmasters.PATHS;
 import com.bitmasters.marchesini.loader.ExerciseLoader;
 import com.bitmasters.marchesini.loader.ResultsLoader;
@@ -17,9 +18,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
+
+import static com.bitmasters.LoggerManager.debug;
 
 // Controller per il controllo della schermata degli Esercizi
 
@@ -53,8 +57,8 @@ public class ExerciseController extends MarchesiniController implements Initiali
             loadChoices(exercise);
 
             //Imposta l'immagine dell'esercizio
-            String image_path = "file:" + PATHS.MARCHESINI_IMAGES + "/cat" + num_category + "/es" + num_exercise + ".png";
-            image.setImage(new Image(image_path));
+            InputStream image_stream = getClass().getResourceAsStream(PATHS.MARCHESINI_IMAGES + "/cat" + num_category + "/es" + num_exercise + ".png");
+            image.setImage(new Image(image_stream));
         }
     }
 
