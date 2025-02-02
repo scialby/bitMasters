@@ -61,11 +61,8 @@ public class Loader {
 
     // Carica gli oggetti della scena
     public void load() {
-        try {
-            Main.util.setScene(scene);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Main.stg.setScene(scene);
+        Main.stg.show();
     }
 
 
