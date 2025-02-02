@@ -1,5 +1,6 @@
 package com.bitmasters.marchesini.json;
 
+import com.bitmasters.Main;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +19,7 @@ public class JsonHandler {
     public static <T extends JsonInterface> T getJsonRoot(String json_path, Class<T> json_class) {
         T json_data = null;
         try {
-            json_data = mapper.readValue(new File(json_path), json_class);
+            json_data = mapper.readValue(Main.class.getClassLoader().getResourceAsStream(json_path), json_class);
         } catch (StreamReadException e) {
             System.out.println("[" + e.getMessage() + "] Dati corrotti oppure formato inatteso.");
         } catch (DatabindException e) {
