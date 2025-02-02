@@ -1,17 +1,5 @@
 {
   "categories" : [ {
-    "id" : 1,
-    "exercises" : [ {
-      "id" : 1,
-      "choice" : "choice2"
-    }, {
-      "id" : 2,
-      "choice" : "choice3"
-    }, {
-      "id" : 3,
-      "choice" : "choice4"
-    } ]
-  }, {
     "id" : 2,
     "exercises" : [ {
       "id" : 1,
@@ -25,6 +13,9 @@
     } ]
   }, {
     "id" : 3,
+    "exercises" : [ ]
+  }, {
+    "id" : 1,
     "exercises" : [ ]
   } ]
 }

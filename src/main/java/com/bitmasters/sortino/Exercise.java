@@ -28,7 +28,7 @@ import static com.bitmasters.sortino.SortinoMain.hasFailed;
 public class Exercise {
     // Costanti per il numero massimo di esercizi per livello e il percorso del file JSON
     public static final int MAX_EXERCISES_PER_LEVEL = 3;
-    private static final String JSON_PATH = "src/main/java/com/pizzagpt/sortino/Exercises.json";
+    private static final String JSON_PATH = "src/main/java/com/bitmasters/sortino/Exercises.json";
     private static final double FEEDBACK_DELAY_SECONDS = 0.3;//tempo di animazione pulsante risposta
 
     // Dati degli esercizi caricati dal file JSON

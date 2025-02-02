@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.bitmasters.Main
+Main-Class: com.bitmasters.Main_1
 
