@@ -15,6 +15,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import static com.bitmasters.sortino.SortinoMain.hasFailed;
 public class Exercise {
     // Costanti per il numero massimo di esercizi per livello e il percorso del file JSON
     public static final int MAX_EXERCISES_PER_LEVEL = 3;
-    private static final String JSON_PATH = "src/main/java/com/bitmasters/sortino/Exercises.json";
+    private static final String JSON_PATH = "Exercises.json"; // Nome del file JSON
     private static final double FEEDBACK_DELAY_SECONDS = 0.3;//tempo di animazione pulsante risposta
 
     // Dati degli esercizi caricati dal file JSON
@@ -38,16 +39,18 @@ public class Exercise {
     public static int wrongAnswersCount = 0;
     public static int correctAnswerCount = 0;
 
-    // Blocco statico per caricare il file JSON con gli esercizi all'avvio
     static {
-        try {
-            byte[] jsonData = Files.readAllBytes(Paths.get(JSON_PATH));
-            exerciseData = new ObjectMapper().readTree(jsonData);
+        try (InputStream is = Main.class.getClassLoader().getResourceAsStream(JSON_PATH)) {
+            if (is == null) {
+                throw new IOException("Risorsa " + JSON_PATH + " non trovata.");
+            }
+            exerciseData = new ObjectMapper().readTree(is);
         } catch (IOException e) {
             debug("Errore caricamento JSON: " + e.getMessage());
             exerciseData = new ObjectMapper().createObjectNode();
         }
     }
+
 
     // Variabili FXML per i componenti dell'interfaccia utente
     @FXML private HBox choicesBox, navigationBox;

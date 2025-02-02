@@ -8,7 +8,7 @@ public final class PATHS {
     public final static String RESOURCES = "src/main/resources"; // Directory delle risorse principali
     public final static String SCENES_PATH = "/com.bitmasters/scenes/"; // Percorso base per le scene
     public final static String CSS = SCENES_PATH + "style.css"; // Percorso del file CSS generale
-    public final static String ACCOUNTS = RESOURCES + SCENES_PATH + "accounts.txt"; // Percorso file degli account
+    public final static String ACCOUNTS = "accounts.txt"; // Percorso file degli account
     public final static String USER_SESSION = SCENES_PATH + "userSession/"; // Percorso base per la sessione utente
     public final static String LOGIN_SCENE = USER_SESSION + "LoginScene.fxml"; // Percorso del file FXML per il login
     public final static String REGISTER_SCENE = USER_SESSION + "RegisterScene.fxml"; // Percorso del file FXML per la registrazione

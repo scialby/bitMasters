@@ -7,13 +7,14 @@ import javafx.scene.layout.HBox;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static com.bitmasters.LoggerManager.debug;
-
 
 /**
  * Classe per la gestione del salvataggio e del caricamento dei progressi degli utenti.
@@ -22,7 +23,7 @@ import static com.bitmasters.LoggerManager.debug;
 public class ProgressManager {
 
     // Percorso del file in cui vengono salvati i progressi di tutti gli utenti.
-    private static final String USERS_PROGRESS_FILE = "src/main/java/com/pizzagpt/sortino/Users.json";
+    private static final String USERS_PROGRESS_FILE = "Users.json";
     private List<ProgressBar> progressBars;
 
     // Mapper per la conversione JSON
@@ -92,7 +93,7 @@ public class ProgressManager {
 
     /**
      * Salva il progresso di un utente aggiornando il file Users.json.
-     * Verifica se il progresso è valido prima di tentare di salvarlo.
+     * Verifica se il progresso è valido prima di tentare di salvare.
      */
     public void saveProgress() {
         UserProgress progress = Main.getCurrentUser().getProgress();
@@ -152,22 +153,45 @@ public class ProgressManager {
      * @return Una mappa con username come chiave e UserProgress come valore.
      */
     private static Map<String, UserProgress> loadAllProgress() {
-        File file = new File(USERS_PROGRESS_FILE);
         Map<String, UserProgress> progressMap = new HashMap<>();
-
-        // Se il file esiste, carica i progressi dal file JSON
-        if (file.exists()) {
+        // Proviamo a caricare la risorsa dal classpath
+        InputStream is = ProgressManager.class.getClassLoader().getResourceAsStream(USERS_PROGRESS_FILE);
+        if (is != null) {
             try {
-                progressMap = mapper.readValue(file, new TypeReference<Map<String, UserProgress>>() {});
-                System.out.println("Progressi caricati da: " + file.getAbsolutePath());
+                String content = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+                if (content.trim().isEmpty()) {
+                    System.out.println("La risorsa " + USERS_PROGRESS_FILE + " è vuota, verrà usata una mappa vuota.");
+                    progressMap = new HashMap<>();
+                } else {
+                    progressMap = mapper.readValue(content, new TypeReference<Map<String, UserProgress>>() {});
+                    System.out.println("Progressi caricati dalla risorsa: " + USERS_PROGRESS_FILE);
+                }
             } catch (IOException e) {
-                System.err.println("Errore nel caricamento dei progressi: " + e.getMessage());
+                System.err.println("Errore nel caricamento dei progressi dalla risorsa: " + e.getMessage());
                 e.printStackTrace();
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    // eventuale log dell'errore di chiusura
+                }
             }
         } else {
-            // Se il file non esiste, lo segnala e lo crea al momento del salvataggio
-            debug("Il file " + file.getAbsolutePath() + " non esiste ancora. Verrà creato al salvataggio.");
+            // Se la risorsa non esiste (ad esempio, durante il salvataggio il file potrebbe essere creato nel file system)
+            File file = new File(USERS_PROGRESS_FILE);
+            if (file.exists()) {
+                try {
+                    progressMap = mapper.readValue(file, new TypeReference<Map<String, UserProgress>>() {});
+                    System.out.println("Progressi caricati da: " + file.getAbsolutePath());
+                } catch (IOException e) {
+                    System.err.println("Errore nel caricamento dei progressi: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            } else {
+                debug("Il file " + USERS_PROGRESS_FILE + " non esiste ancora. Verrà creato al salvataggio.");
+            }
         }
         return progressMap;
     }
+
 }
