@@ -85,10 +85,12 @@ public class SessionController implements Initializable, ControllerInterface {
     }
 
     // Login
+    // Porta alla videata del login
     public void toLogin() throws IOException {
-        Utils.setScene(PATHS.LOGIN_SCENE); // Utilizzato PATHS per il percorso
+        Utils.setSceneCSS(PATHS.LOGIN_SCENE); // Utilizzato PATHS per il percorso
     }
 
+    // Gestisce il login
     public void loginHandler(ActionEvent event) throws IOException {
         this.username = usernameField.getText();
         this.password = passwordField.getText();
@@ -115,11 +117,14 @@ public class SessionController implements Initializable, ControllerInterface {
             errorField.setText("Compila gli spazi vuoti.");
         }
     }
+
     // Register
+    // Porta alla videata del register
     public void toRegister() throws IOException {
-        Utils.setScene(PATHS.REGISTER_SCENE); // Utilizzato PATHS per il percorso
+        Utils.setSceneCSS(PATHS.REGISTER_SCENE); // Utilizzato PATHS per il percorso
     }
 
+    // Gestisce il register
     public void registerHandler(ActionEvent event) throws IOException {
         this.username = usernameField.getText();
         this.password = passwordField.getText();
