@@ -7,24 +7,25 @@ import java.util.logging.SimpleFormatter;
 
 public class LoggerManager {
 
-    // Logger globale
+    // Logger globale usato per registrare messaggi
     public static final Logger LOGGER = Logger.getLogger("GlobalLogger");
 
+    // Blocco statico per configurare il logger all'avvio
     static {
         configureLogger();
     }
 
     /**
-     * Configura il logger globale con un handler solo per la console.
+     * Configura il logger globale, impostando il livello e un handler per la console.
      */
     private static void configureLogger() {
         // Rimuove gli handler predefiniti
         LOGGER.setUseParentHandlers(false);
 
-        // Imposta il livello del logger
+        // Imposta il livello del logger a mostrare tutti i messaggi
         LOGGER.setLevel(Level.ALL);
 
-        // Handler per la console
+        // Crea un handler per la console e imposta il livello
         ConsoleHandler consoleHandler = new ConsoleHandler();
         consoleHandler.setLevel(Level.ALL); // Mostra tutti i livelli nella console
         consoleHandler.setFormatter(new SimpleFormatter() {
@@ -36,40 +37,36 @@ public class LoggerManager {
             }
         });
 
-        // Aggiunge l'handler al logger
+        // Aggiunge l'handler configurato al logger
         LOGGER.addHandler(consoleHandler);
 
-        // Messaggio iniziale
+        // Logga un messaggio iniziale per indicare che il logger è avviato
         LOGGER.info("Logger avviato correttamente!");
     }
 
     /**
-     * Metodo per registrare un messaggio di debug
-     * @param message Messaggio da loggare
+     * Registra un messaggio di debug.
      */
     public static void debug(String message) {
         LOGGER.fine("[DEBUG] " + message);
     }
 
     /**
-     * Metodo per registrare un messaggio di errore
-     * @param message Messaggio di errore
+     * Registra un messaggio di errore.
      */
     public static void error(String message) {
         LOGGER.severe("[ERROR] " + message);
     }
 
     /**
-     * Metodo per registrare un messaggio informativo
-     * @param message Messaggio informativo
+     * Registra un messaggio informativo.
      */
     public static void info(String message) {
         LOGGER.info("[INFO] " + message);
     }
 
     /**
-     * Metodo per registrare un messaggio di avvertimento
-     * @param message Messaggio di avvertimento
+     * Registra un messaggio di avvertimento.
      */
     public static void warn(String message) {
         LOGGER.warning("[WARN] " + message);

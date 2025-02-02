@@ -16,13 +16,11 @@
     -dark-gray: rgb(30, 30, 30);
 }
 
-/* #####
-  #     # ###### #    # ###### #####    ##   #      #
-  #       #      ##   # #      #    #  #  #  #      #
-  #  #### #####  # #  # #####  #    # #    # #      #
-  #     # #      #  # # #      #####  ###### #      #
-  #     # #      #   ## #      #   #  #    # #      #
-   #####  ###### #    # ###### #    # #    # ###### # */
+/* --------------------------------------------------------------------------*/
+
+/* GENERALI */
+
+/* --------------------------------------------------------------------------*/
 
 /* SFONDO */
 /* Sfondo globale per tutte le schede */
@@ -62,7 +60,6 @@
     -fx-effect: dropshadow(three-pass-box, -gray-txt, 50.0, 0.0, 0.0, 0.0);
 }
 
-/* TODO: I seguenti sono da revisionare/modificare */
 /* Caricamento */
 .loading {
     -fx-background-color: white;
@@ -89,23 +86,32 @@
     -fx-border-radius: 0;
     -fx-border-width: 1;
 }
-/* Pulsanti di uscita */
-.button.exit {
-    -fx-background-color: -red-bg;
-    -fx-text-fill: -red-txt;
-}
-.button.exit:hover {
-    -fx-background-color: -red-txt;
-    -fx-text-fill: -red-bg;
+
+/* Titolo delle schermate di Marchesini */
+.label.title {
+    -fx-font-family: 'Leelawadee UI';
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+    -fx-alignment: center;
 }
 
-/*######
-  #     # #    # #       ####    ##   #    # ##### #
-  #     # #    # #      #       #  #  ##   #   #   #
-  ######  #    # #       ####  #    # # #  #   #   #
-  #       #    # #           # ###### #  # #   #   #
-  #       #    # #      #    # #    # #   ##   #   #
-  #        ####  ######  ####  #    # #    #   #   # */
+/* Counter dell'esercizio di Marchesini */
+.label.progress {
+    -fx-font-family: 'Leelawadee UI';
+    -fx-font-size: 28px;
+    -fx-alignment: center;
+    -fx-text-fill: -dark-gray;
+    -fx-border-color: -dark-gray;
+    -fx-border-radius: 50%;
+    -fx-border-width: 1;
+    -fx-padding: 10 10 10 10;
+}
+
+/* --------------------------------------------------------------------------*/
+
+/* PULSANTI */
+
+/* --------------------------------------------------------------------------*/
 
 /* La dimensione del font e lo spessore, se diversi da quelli dichiarati negli stili css, dovranno essere applicati manualmente ed individualmente all'interno del tag del file .fxml */
 /* esempio: <style="-fx-font-size: 12px; -fx-font-weight: bold;"> , dove lo stile è quello del bottone classico, però la dimensione è 12px e spessore grassetto */
@@ -132,6 +138,17 @@
 }
 .button:disabled {
     -fx-opacity: 0.6;
+}
+
+/* LOGOUT */
+/* Pulsante per sloggare */
+.button.exit {
+    -fx-background-color: -red-bg;
+    -fx-text-fill: -red-txt;
+}
+.button.exit:hover {
+    -fx-background-color: -red-txt;
+    -fx-text-fill: -red-bg;
 }
 
 /* ACCEDI e REGISTRATI */
@@ -189,4 +206,17 @@
 .btn-blue:hover {
     -fx-background-color: -blue-txt;
     -fx-text-fill: -blue-bg;
+}
+
+/* TASTO VERDE */
+/* Variazione del tasto default, che lo rende verde */
+.btn-green {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-background-color: -green-bg;
+    -fx-text-fill: -green-txt;
+}
+.btn-green:hover {
+    -fx-background-color: -green-txt;
+    -fx-text-fill: -green-bg;
 }

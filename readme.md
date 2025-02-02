@@ -9,3 +9,5 @@ https://docs.google.com/document/d/1Os1Jqc245L-RGMEIVlnqEj0ZpSDPkA9R7LZ3pF9wuZQ/
 - Avviare il progetto con maven: `mvn javafx:run` o da intellij con il tasto apposito
 - Usare sceneBuilder per gestire le GUI
 
+# Consigliato
+https://carbon.now.sh per creare immagini di codice belle graficamente(tema One Dark)

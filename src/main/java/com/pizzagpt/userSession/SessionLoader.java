@@ -1,7 +1,6 @@
 package com.pizzagpt.userSession;
 
-import com.pizzagpt.Loader;
-import com.pizzagpt.PATHS;
+import com.pizzagpt.marchesini.loader.Loader;
 
 import java.io.IOException;
 
@@ -13,8 +12,7 @@ public class SessionLoader extends Loader {
     // Costruttore
     public SessionLoader(User user, String path) throws IOException {
         super(user, path);
-        setCss(PATHS.CSS);
-        controller = (SessionController)super.getController();
+        controller = (SessionController) super.getController();
         controller.setUser(user);
         load();
         show();

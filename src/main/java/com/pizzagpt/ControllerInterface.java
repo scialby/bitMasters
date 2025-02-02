@@ -2,9 +2,10 @@ package com.pizzagpt;
 
 import com.pizzagpt.userSession.User;
 
-//Se si vuole passare l'utente loggato, bisogna implementare questa interfaccia nel controller
+//Interfaccia che permette il passaggio dell'utente loggato
 
 public interface ControllerInterface {
     void setUser(User user); //Dichiara l'utente loggato nel controller
-    void logOut(); //Dichiara che l'utente non è
+    User getUser(); //Restituisce l'utente
+    void logOut(); //Riporta l'utente alla schermata di accesso (disconnessione)
 }

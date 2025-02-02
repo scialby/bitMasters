@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.controller.DescriptionController">
+   <top>
+      <AnchorPane nodeOrientation="RIGHT_TO_LEFT" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="title" alignment="CENTER" styleClass="title" text="Title" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+            <Button mnemonicParsing="false" onAction="#logOut" styleClass="btn-red" text="X" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="description" alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#toExercise" prefHeight="68.0" prefWidth="121.0" styleClass="btn-green" text="Avvia" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="footer" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="246.0" layoutY="13.0" mnemonicParsing="false" onAction="#toSelection" prefHeight="35.0" prefWidth="109.0" styleClass="btn-red" text="Annulla" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="245.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

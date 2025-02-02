@@ -5,190 +5,214 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="Es0_0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.MarchesiniController">
-   <children>
-      <GridPane alignment="CENTER" layoutY="70.0" prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.marchesini.controller.SelectionController">
+   <center>
+      <GridPane fx:id="categories" alignment="CENTER" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="225.0" prefWidth="346.0" styleClass="chapter">
+            <AnchorPane layoutX="692.0" layoutY="25.0" styleClass="chapter">
                <children>
-                  <GridPane prefHeight="170.0" prefWidth="270.0">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <AnchorPane prefHeight="223.0" prefWidth="284.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
                      <children>
-                        <Pane prefHeight="54.0" prefWidth="256.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                        <GridPane prefHeight="170.0" prefWidth="303.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
-                              <Label prefHeight="57.0" prefWidth="250.0" text="CAPITOLO 1">
+                              <AnchorPane GridPane.rowIndex="1">
+                                 <children>
+                                    <VBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="FACILE">
+                                             <font>
+                                                <Font name="Leelawadee UI Semilight" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <AnchorPane prefHeight="26.0" prefWidth="303.0">
+                                             <children>
+                                                <ProgressBar fx:id="progress_bar" progress="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <Label text="CAPITOLO 1">
                                  <font>
                                     <Font name="Leelawadee UI Bold" size="28.0" />
                                  </font>
                               </Label>
-                           </children>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                           <children>
-                              <ProgressBar layoutY="24.0" prefHeight="25.0" prefWidth="230.0" progress="0.0" />
-                              <Label prefHeight="25.0" prefWidth="230.0" text="PRINCIPIANTE">
-                                 <font>
-                                    <Font name="Leelawadee UI Semilight" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
-                        </Pane>
-                        <GridPane GridPane.rowIndex="2">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
-                                 <GridPane.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
+                              <AnchorPane GridPane.rowIndex="2">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Button" style="-fx-font-size: 14px;"/>
-                                 </children></Pane>
-                              <Pane prefHeight="35.0" prefWidth="110.0" GridPane.columnIndex="1">
-                                 <children>
-                                    <Button fx:id="cat1" mnemonicParsing="false" onAction="#toExercise" prefHeight="30.0" prefWidth="105.0" text="INIZIA" style="-fx-font-size: 14px; -fx-font-weight: bold">
+                                    <Button fx:id="cat1" layoutY="8.0" mnemonicParsing="false" onAction="#toDescription" style="-fx-font-size: 14; -fx-font-weight: bold;" text="INIZIA" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                        <font>
-                                          <Font name="Arial" size="14.0" />
-                                       </font></Button>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                              </Pane>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </GridPane>
-               </children>
-               <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </GridPane.margin>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="chapter" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </GridPane.margin>
-               <children>
-                  <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="270.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
-                           <children>
-                              <Label prefHeight="50.0" prefWidth="230.0" text="CAPITOLO 2">
-                                 <font>
-                                    <Font name="Leelawadee UI Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </GridPane.margin>
-                           <children>
-                              <ProgressBar layoutY="24.0" prefHeight="25.0" prefWidth="230.0" progress="0.0" />
-                              <Label prefHeight="25.0" prefWidth="230.0" text="INTERMEDIO">
-                                 <font>
-                                    <Font name="Leelawadee UI Semilight" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <GridPane GridPane.rowIndex="2">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0">
-                                 <GridPane.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" text="Button" style="-fx-font-size: 14px;"/>
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                 <GridPane.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </GridPane.margin>
-                                 <children>
-                                    <Button fx:id="cat2" mnemonicParsing="false" onAction="#toExercise" prefHeight="30.0" prefWidth="105.0" text="INIZIA" style="-fx-font-size: 14px; -fx-font-weight: bold">
-                                       <font>
-                                          <Font size="14.0" />
+                                          <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Button>
                                  </children>
-                              </Pane>
+                              </AnchorPane>
                            </children>
                         </GridPane>
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </GridPane>
+                  </AnchorPane>
                </children>
-            </Pane>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" styleClass="chapter" GridPane.columnIndex="1">
+               <children>
+                  <AnchorPane prefHeight="223.0" prefWidth="284.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <GridPane prefHeight="170.0" prefWidth="303.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane GridPane.rowIndex="1">
+                                 <children>
+                                    <VBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="INTERMEDIO">
+                                             <font>
+                                                <Font name="Leelawadee UI Semilight" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <AnchorPane prefHeight="26.0">
+                                             <children>
+                                                <ProgressBar fx:id="progress_bar" progress="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <Label text="CAPITOLO 2">
+                                 <font>
+                                    <Font name="Leelawadee UI Bold" size="28.0" />
+                                 </font>
+                              </Label>
+                              <AnchorPane GridPane.rowIndex="2">
+                                 <children>
+                                    <Button fx:id="cat2" layoutY="8.0" mnemonicParsing="false" onAction="#toDescription" style="-fx-font-size: 14; -fx-font-weight: bold;" text="INIZIA" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane styleClass="chapter" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+               <children>
+                  <AnchorPane prefHeight="223.0" prefWidth="284.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <GridPane prefHeight="170.0" prefWidth="303.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane GridPane.rowIndex="1">
+                                 <children>
+                                    <VBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="DIFFICILE">
+                                             <font>
+                                                <Font name="Leelawadee UI Semilight" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <AnchorPane prefHeight="26.0" prefWidth="303.0">
+                                             <children>
+                                                <ProgressBar fx:id="progress_bar" progress="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <Label text="CAPITOLO 3">
+                                 <font>
+                                    <Font name="Leelawadee UI Bold" size="28.0" />
+                                 </font>
+                              </Label>
+                              <AnchorPane GridPane.rowIndex="2">
+                                 <children>
+                                    <Button fx:id="cat3" layoutY="8.0" mnemonicParsing="false" onAction="#toDescription" style="-fx-font-weight: bold; -fx-font-size: 14;" text="INIZIA" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+                  </AnchorPane>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
       </GridPane>
-      <HBox alignment="CENTER" layoutY="450.0" prefHeight="90.0" prefWidth="600.0" spacing="75.0" styleClass="footer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="77.0" prefWidth="1000.0" spacing="75.0" styleClass="footer" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#toMainMenu" prefHeight="50.0" prefWidth="200.0" styleClass="btn-red" text="Torna al menù" textFill="RED">
                <font>
                   <Font name="System Bold" size="20.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" styleClass="btn-red" text="Esci dall'account" textFill="RED">
                <font>
                   <Font name="System Bold" size="20.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </HBox>
-      <Label alignment="CENTER" prefHeight="70.0" prefWidth="600.0" text="ESERCIZI DI MARCHESINI">
-         <font>
-            <Font name="Leelawadee UI Bold" size="33.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+   </bottom>
+   <top>
+      <AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="57.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" styleClass="title" text="ESERCIZI DI MARCHESINI" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="32.0" />
+               </font></Label>
+            <Button mnemonicParsing="false" onAction="#logOut" styleClass="btn-red" text="X" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

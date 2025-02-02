@@ -30,7 +30,6 @@ public class UserManager {
     public boolean addUser(User user) {
         if(!exists(user)) {
             users.add(user);
-            new File(PATHS.MARCHESINI_SAVES + "user" + user.getId()).mkdir();
             return true;
         }
         return false;
@@ -53,8 +52,8 @@ public class UserManager {
                 pw.println(user.getUsername() + SPLITTER + user.getPassword() + SPLITTER + user.getId());
             }
             pw.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File non trovato. [Eccezione " + ex + "]");
+        } catch (FileNotFoundException e) {
+            System.out.println("[" + e.getMessage() + "] Nessun account ancora registrato.");
             return false;
         }
         return true;

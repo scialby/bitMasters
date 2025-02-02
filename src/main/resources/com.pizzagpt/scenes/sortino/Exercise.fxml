@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fx:id="scrollPane" fitToWidth="false" hbarPolicy="AS_NEEDED" prefViewportHeight="400" prefViewportWidth="1280" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzagpt.sortino.Exercise">
+   <content>
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20">
+         <Text fx:id="content" strokeType="OUTSIDE" strokeWidth="0.0" text="Svolgi l'esercizio" textAlignment="CENTER" wrappingWidth="477.4425802282183">
+            <font><Font size="39.0" /></font>
+         </Text>
+
+         <Label fx:id="instructionsLabel" alignment="CENTER" prefHeight="41.0" prefWidth="1000.0" text="istruzioni" textAlignment="CENTER">
+            <font><Font name="Segoe UI Italic" size="18.0" /></font>
+         </Label>
+
+         <ImageView fx:id="exerciseImage" pickOnBounds="true" preserveRatio="true" />
+
+         <!-- Barra di progresso aggiunta qui -->
+         <HBox fx:id="progressBar" alignment="CENTER" spacing="10" prefWidth="1000.0">
+         </HBox>
+
+         <HBox fx:id="choicesBox" alignment="CENTER" prefHeight="49.0" prefWidth="1000.0" style="-fx-spacing: 20;">
+            <children>
+               <Button fx:id="choice1" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-font-size: 18px; -fx-font-weight: bold" styleClass="option" text="; e }" textFill="#0073ff" HBox.hgrow="NEVER">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+               <Button fx:id="choice2" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-font-size: 18px; -fx-font-weight: bold" styleClass="option" text=", e (" textFill="#0073ff" HBox.hgrow="ALWAYS">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+               <Button fx:id="choice3" alignment="CENTER" layoutX="314.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-font-size: 18px; -fx-font-weight: bold" styleClass="option" text="; e )" textFill="#0073ff" HBox.hgrow="NEVER">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+               <Button fx:id="choice4" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#handleChoice" prefHeight="49.0" prefWidth="106.0" style="-fx-font-size: 18px; -fx-font-weight: bold" styleClass="option" text="; e }" textFill="#0073ff" HBox.hgrow="NEVER">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </HBox>
+
+         <HBox fx:id="navigationBox" alignment="CENTER" prefHeight="49.0" prefWidth="1000.0" style="-fx-spacing: 100;">
+            <children>
+               <Button fx:id="previousBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="204.0" styleClass="navigation" text="&lt;&lt; Precedente" textFill="#868686">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+               <Button fx:id="mainMenuBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="204.0" style="-fx-font-size: 21px; -fx-font-weight: bold" styleClass="btn-red" text="Esci dall'esercizio" textFill="RED">
+                  <font>
+                     <Font name="System Bold" size="21.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+               <Button fx:id="nextBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="204.0" styleClass="navigation" text="Prossimo &gt;&gt;" textFill="#868686">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </HBox>
+      </VBox>
+   </content>
+</ScrollPane>

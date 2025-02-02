@@ -1,44 +1,88 @@
 package com.pizzagpt;
 
+import com.pizzagpt.sortino.SortinoMain;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.Pane;  // Importa il tipo Pane
+import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
+import javafx.geometry.Rectangle2D;
 import java.io.IOException;
-
+import java.util.Objects;
+import static com.pizzagpt.LoggerManager.debug;
 public class Utils {
 
+    public static void setScene(String path, int windowWidth, int windowHeight) throws IOException {
+        debug("inizio caricamento scena: "+ path);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
+        Parent loadedContent = fxmlLoader.load();
+        Scene scene = new Scene(loadedContent, windowWidth, windowHeight);
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        double centerX = (screenBounds.getWidth() - windowWidth) / 2;
+        double centerY = (screenBounds.getHeight() - windowHeight) / 2;
+
+        Main.stg.setX(centerX);
+        Main.stg.setY(centerY);
+        Main.stg.setWidth(windowWidth);
+        Main.stg.setHeight(windowHeight);
+        Main.stg.setMinWidth(windowWidth);
+        Main.stg.setMinHeight(windowHeight);
+        Main.stg.setMaxWidth(windowWidth);
+        Main.stg.setMaxHeight(windowHeight);
+        Main.stg.setResizable(false);
+
+        Main.stg.setScene(scene);
+        Main.stg.show();
+
+    }
+
+    /* Prende il nome del file fxml in cui ci si trova*/
+    public static String getSceneName() {
+        if (Main.stg != null && Main.stg.getScene() != null && Main.stg.getScene().getRoot() != null) {
+            return Main.stg.getScene().getRoot().getId();
+        } else {
+            return "Root, Scene, or Stage is not set.";
+        }
+    }
     public static void setScene(String path) throws IOException {
-        //DIFFERENZA: carica il file con la dimensione default.
+        int windowWidth = Main.defaultWindowWidth;
+        int windowHeight = Main.defaultWindowHeight;
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
+        Parent loadedContent = fxmlLoader.load();
+        Scene scene = new Scene(loadedContent, windowWidth, windowHeight);
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        double centerX = (screenBounds.getWidth() - windowWidth) / 2;
+        double centerY = (screenBounds.getHeight() - windowHeight) / 2;
+
+        Main.stg.setX(centerX);
+        Main.stg.setY(centerY);
+        Main.stg.setWidth(windowWidth);
+        Main.stg.setHeight(windowHeight);
+        Main.stg.setMinWidth(windowWidth);
+        Main.stg.setMinHeight(windowHeight);
+        Main.stg.setMaxWidth(windowWidth);
+        Main.stg.setMaxHeight(windowHeight);
+        Main.stg.setResizable(false);
+
+        Main.stg.setScene(scene);
+        Main.stg.show();
+        debug("Settaggio scena completato, id esercizio: "+ SortinoMain.exId);
+
+    }
+
+    /*IMPOSTA LA SCENA CON IL CSS*/
+    public static void setSceneCSS(String path) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
         Pane loadedContent = fxmlLoader.load();
         Scene scene = new Scene(loadedContent);
-        scene.getStylesheets().add(Utils.class.getResource(PATHS.CSS).toExternalForm()); //Applica il CSS giusto
+        scene.getStylesheets().add(Objects.requireNonNull(Utils.class.getResource(PATHS.CSS)).toExternalForm());
         Main.stg.setScene(scene);
-        Main.stg.show();
-    }
-
-    public static void setScene(String path, int windowWidth, int windowHeight) throws IOException {
-        //DIFFERENZA: si può specificare la dimensione della finestra nei parametri della funzione. Ti ho lasciato il codice per evitare problemi
-
-        // Carica il file FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(path));
-        Pane loadedContent = fxmlLoader.load(); // Usa Pane invece di VBox per evitare il cast errato
-
-        // Crea la Label per il punteggio del giocatore
-        Main.playerScoreLabel = new Label("Score: " + Main.playerScore);
-
-        // Crea un VBox che contenga la Label e il contenuto caricato dal file FXML
-        VBox root = new VBox();
-        root.getChildren().addAll(/*Main.playerScoreLabel, */loadedContent);
-
-        // Crea la scena con il VBox che contiene la Label e il contenuto FXML
-        Scene scene = new Scene(root, windowWidth, windowHeight);
-
-        // Imposta la scena sullo stage principale
-        Main.stg.setScene(scene);
+        Main.stg.setTitle("");
         Main.stg.show();
     }
 }
