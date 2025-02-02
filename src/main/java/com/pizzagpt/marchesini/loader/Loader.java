@@ -3,6 +3,7 @@ package com.pizzagpt.marchesini.loader;
 import com.pizzagpt.ControllerInterface;
 import com.pizzagpt.Main;
 import com.pizzagpt.PATHS;
+import com.pizzagpt.Utils;
 import com.pizzagpt.userSession.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.util.Objects;
+
+import static com.pizzagpt.LoggerManager.debug;
 
 public class Loader {
 
@@ -45,6 +49,7 @@ public class Loader {
         scene = new Scene(root); //Crea la scena
         scene.getStylesheets().clear(); //Toglie eventuali altri file CSS
         scene.getStylesheets().add(getClass().getResource(PATHS.CSS).toExternalForm()); //Applica il CSS giusto
+
     }
 
     // Getter
@@ -55,11 +60,14 @@ public class Loader {
     }
 
     // Carica gli oggetti della scena
-    // (dietro la schermata di caricamento)
     public void load() {
-        Main.stg.setScene(scene);
-        Main.stg.show();
+        try {
+            Main.util.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     // Toglie la schermata di caricamento
     // (mostra tutti gli oggetti caricati definitivamente)
