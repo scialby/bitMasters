@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane id="rootPaneId" fx:id="rootPaneId"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitmasters.marchesini.controller.ExerciseController">
+   <bottom>
+      <GridPane fx:id="footer" prefHeight="75.0" prefWidth="1280.0" styleClass="footer" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="400.0" minWidth="0.0" prefWidth="400.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="752.0" minWidth="381.0" prefWidth="494.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="0.0" prefWidth="400.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#toSelection" styleClass="btn-red" text="Esci dall'esercizio" GridPane.columnIndex="1" />
+            <Button fx:id="previous_btn" mnemonicParsing="false" onAction="#controlNavigation" text="&lt;&lt; Precedente" />
+            <Button fx:id="next_btn" mnemonicParsing="false" onAction="#controlNavigation" text="Prossimo &gt;&gt;" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+   </bottom>
+   <top>
+      <GridPane prefHeight="78.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="98.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="1166.0" minWidth="10.0" prefWidth="1164.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#logOut" styleClass="btn-red" text="X" />
+               </children>
+               <GridPane.margin>
+                  <Insets right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Pane>
+            <Label fx:id="title" styleClass="title" text="Title" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="32.0" />
+               </font></Label>
+            <Label fx:id="progress" alignment="CENTER" styleClass="progress" text="Progress" />
+         </children>
+      </GridPane>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="506.0" minHeight="10.0" prefHeight="460.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="272.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane prefHeight="79.0" prefWidth="1280.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="64.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox fx:id="choice_container" alignment="CENTER" prefHeight="38.0" prefWidth="1280.0" spacing="50.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+
+                      <children>
+                        <Button fx:id="choice1" mnemonicParsing="false" onAction="#choiceHandler" style="-fx-font-weight: bold;" styleClass="btn-blue" text="Button" />
+                        <Button fx:id="choice2" mnemonicParsing="false" onAction="#choiceHandler" style="-fx-font-weight: bold;" styleClass="btn-blue" text="Button" />
+                        <Button fx:id="choice3" mnemonicParsing="false" onAction="#choiceHandler" style="-fx-font-weight: bold;" styleClass="btn-blue" text="Button" />
+                        <Button fx:id="choice4" mnemonicParsing="false" onAction="#choiceHandler" style="-fx-font-weight: bold;" styleClass="btn-blue" text="Button" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="question" text="Question">
+                     <font>
+                        <Font name="System Italic" size="16.0" />
+                     </font></Label>
+               </children>
+            </GridPane>
+             <ImageView fx:id="image" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

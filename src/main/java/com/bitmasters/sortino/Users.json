@@ -1,0 +1,10 @@
+{
+  "root" : {
+    "attempts" : 8,
+    "currentLevel" : 3
+  },
+  "user" : {
+    "attempts" : 7,
+    "currentLevel" : 1
+  }
+}

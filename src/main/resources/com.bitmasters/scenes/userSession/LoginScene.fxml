@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitmasters.userSession.SessionController">
+   <children>
+      <VBox alignment="CENTER" layoutY="296.0" styleClass="inputbuttons">
+         <children>
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#loginHandler" prefHeight="51.0" prefWidth="85.0" styleClass="btn-login" text="ACCEDI">
+               <font>
+                  <Font name="Segoe UI" size="16.0" />
+               </font>
+                </Button>
+            <Hyperlink alignment="CENTER" onAction="#toRegister" prefHeight="26.0" prefWidth="300.0" text="Non hai un account? Registrati qui!">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutY="14.0" prefHeight="51.0" prefWidth="300.0" text="BENVENUTO!" textAlignment="CENTER">
+         <font>
+            <Font name="Leelawadee UI Bold" size="35.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="87.0" prefWidth="200.0" styleClass="mainarea">
+         <children>
+            <Label fx:id="windowName" alignment="CENTER" prefHeight="41.0" prefWidth="132.0" text="Accedi" textAlignment="CENTER">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="25.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" prefHeight="82.0" prefWidth="149.0" styleClass="inputfields">
+               <children>
+                  <TextField fx:id="usernameField" prefHeight="41.0" prefWidth="184.0" promptText="Username" styleClass="textfield">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="passwordField" prefHeight="41.0" prefWidth="184.0" promptText="Password" styleClass="textfield">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Label fx:id="errorField" alignment="CENTER" layoutY="251.0" prefHeight="21.0" prefWidth="300.0" textAlignment="CENTER" textFill="#cd0000">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+
+   </children>
+</AnchorPane>

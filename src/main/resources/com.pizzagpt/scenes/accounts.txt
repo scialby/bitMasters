@@ -1,2 +1,0 @@
-root,root,1
-user,user,2

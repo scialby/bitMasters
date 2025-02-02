@@ -1,0 +1,226 @@
+/* Variabili */
+* {
+    -green-bg: #c8ffc8;
+    -green-txt: #00ad06;
+    -red-bg: #ffc8c8;
+    -red-txt: rgb(255,0,0);
+    -blue-bg: rgb(187, 217, 255);
+    -blue-txt: rgb(0, 115, 255);
+    -gray-bg: #ebebeb;
+    -gray-txt: #868686;
+    /*Scala di grigi*/
+    -white: rgb(255,255,255);
+    -light-gray-bg: rgb(240, 240, 240);
+    -light-gray: rgb(180, 180, 180);
+    -gray: rgb(100, 100, 100);
+    -dark-gray: rgb(30, 30, 30);
+}
+.root {
+    -fx-background-color: #000000;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+/* --------------------------------------------------------------------------*/
+
+/* GENERALI */
+
+/* --------------------------------------------------------------------------*/
+
+/* SFONDO */
+/* Sfondo globale per tutte le schede */
+.root {
+    -fx-background-color: -white;
+}
+
+/* CAMPI DI TESTO */
+/* Campi di input per il login e register */
+.textfield {
+    -fx-background-color: -light-gray-bg;
+    -fx-prompt-text-fill: -gray;
+    -fx-text-fill: -gray;
+}
+.textfield:focused {
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 2;
+    -fx-border-color: -dark-gray;
+    -fx-prompt-text-fill: -light-gray;
+    -fx-text-fill: -gray;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* HYPERTEXT */
+/* L'hypertext azzurro del login e register, quando cliccato, non fa effetti */
+.hyperlink:pressed {
+    -fx-border-style: none;
+    -fx-focus-color: transparent;
+}
+
+/* FOOTER */
+/* Parte inferiore dello schermo, dove ci saranno i tasti di controllo */
+.footer {
+    -fx-spacing: 75;
+    -fx-background-color: -light-gray-bg;
+    -fx-effect: dropshadow(three-pass-box, -gray-txt, 50.0, 0.0, 0.0, 0.0);
+}
+
+/* Caricamento */
+.loading {
+    -fx-background-color: white;
+}
+/* CONTENITORI */
+.mainarea {
+    -fx-spacing: 15;
+}
+.inputfields {
+    -fx-spacing: 25;
+}
+.inputbuttons {
+    -fx-spacing: 10;
+}
+/* Indicatore degli esercizi */
+.label.counter {
+    -fx-border-width: 2;
+    -fx-border-color: rgb(136, 136, 136);
+    -fx-border-radius: 25;
+    -fx-text-fill: #888888;
+}
+.chapter {
+    -fx-border-color: -gray-bg;
+    -fx-border-radius: 0;
+    -fx-border-width: 1;
+}
+
+/* Titolo delle schermate di Marchesini */
+.label.title {
+    -fx-font-family: 'Leelawadee UI';
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+    -fx-alignment: center;
+}
+
+/* Counter dell'esercizio di Marchesini */
+.label.progress {
+    -fx-font-family: 'Leelawadee UI';
+    -fx-font-size: 28px;
+    -fx-alignment: center;
+    -fx-text-fill: -dark-gray;
+    -fx-border-color: -dark-gray;
+    -fx-border-radius: 50%;
+    -fx-border-width: 1;
+    -fx-padding: 10 10 10 10;
+}
+
+/* --------------------------------------------------------------------------*/
+
+/* PULSANTI */
+
+/* --------------------------------------------------------------------------*/
+
+/* La dimensione del font e lo spessore, se diversi da quelli dichiarati negli stili css, dovranno essere applicati manualmente ed individualmente all'interno del tag del file .fxml */
+/* esempio: <style="-fx-font-size: 12px; -fx-font-weight: bold;"> , dove lo stile è quello del bottone classico, però la dimensione è 12px e spessore grassetto */
+
+/* TASTO GENERALE */
+/* Il look default dei pulsanti */
+.button {
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI", "Lucida Grande", sans-serif;
+    -fx-background-color: -gray-bg;
+    -fx-text-fill: -gray-txt;
+}
+.button:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-background-color: -gray-txt;
+    -fx-text-fill: -gray-bg;
+}
+.button:pressed {
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+.button:disabled {
+    -fx-opacity: 0.6;
+}
+
+/* LOGOUT */
+/* Pulsante per sloggare */
+.button.exit {
+    -fx-background-color: -red-bg;
+    -fx-text-fill: -red-txt;
+}
+.button.exit:hover {
+    -fx-background-color: -red-txt;
+    -fx-text-fill: -red-bg;
+}
+
+/* ACCEDI e REGISTRATI */
+/* Come sono visualizzati i tasti "ACCEDI" e "REGISTRATI" */
+.btn-login {
+    -fx-background-color: -light-gray-bg;
+    -fx-text-fill: -dark-gray;
+    -fx-background-radius: 25;
+    -fx-font-size: 16px;
+}
+.btn-login:hover {
+    -fx-background-color: -dark-gray;
+    -fx-text-fill: -light-gray-bg;
+    -fx-font-weight: bold;
+}
+
+/* MAIN SELEZIONE */
+/* Tasti principali di scelta di selezione, nel menù principale */
+.btn-main-selection {
+    -fx-font-size: 25px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: -light-gray;
+    -fx-border-width: 2;
+    -fx-text-fill: -gray;
+}
+.btn-main-selection:hover {
+    -fx-font-weight: bold;
+    -fx-background-color: -light-gray;
+    -fx-text-fill: -white;
+}
+
+/* TASTO ROSSO */
+/* Variazione del tasto default, che lo rende rosso */
+.btn-red {
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-background-color: -red-bg;
+    -fx-text-fill: -red-txt;
+}
+.btn-red:hover {
+    -fx-background-color: -red-txt;
+    -fx-text-fill: -red-bg;
+}
+
+/* TASTO BLU */
+/* Variazione del tasto default, che lo rende blu */
+.btn-blue {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-background-color: -blue-bg;
+    -fx-text-fill: -blue-txt;
+}
+.btn-blue:hover {
+    -fx-background-color: -blue-txt;
+    -fx-text-fill: -blue-bg;
+}
+
+/* TASTO VERDE */
+/* Variazione del tasto default, che lo rende verde */
+.btn-green {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-background-color: -green-bg;
+    -fx-text-fill: -green-txt;
+}
+.btn-green:hover {
+    -fx-background-color: -green-txt;
+    -fx-text-fill: -green-bg;
+}

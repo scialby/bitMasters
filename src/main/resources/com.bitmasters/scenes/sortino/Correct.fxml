@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#toMenu" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bitmasters.sortino.CorrectAnswer">
+   <children>
+      <Text layoutX="151.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complimenti, hai superato l'esercizio" wrappingWidth="298.986328125">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <HBox fx:id="navigationBox" alignment="CENTER" layoutX="46.0" layoutY="312.0" prefHeight="49.0" prefWidth="509.0" style="-fx-spacing: 100;">
+         <children>
+            <Button fx:id="newExBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#newEx" prefHeight="49.0" prefWidth="204.0" styleClass="navigation" text="Nuovo esercizio" textFill="#868686">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="toMenuBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#toMenu" prefHeight="49.0" prefWidth="204.0" styleClass="navigation" text="Torna al menù" textFill="#868686">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</Pane>
